@@ -46,7 +46,14 @@ public class WindowPositionGetter : MonoBehaviour
         public int right;
         public int bottom;
     }
+    private struct POINT
+    {
+        public int X;
+        public int Y;
+    }
     #endif
+    
+
 
     // Mac-specific code
     #if UNITY_STANDALONE_OSX
