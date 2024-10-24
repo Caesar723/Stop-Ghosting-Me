@@ -2,9 +2,10 @@ using UnityEngine;
 using Unity.Netcode;
 public class Network_Manager:NetworkBehaviour
 {
-    [SerializeField] private SpriteRenderer _renderer;
+    //[SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private Rigidbody2D _rigidbody;
-    private bool isChangingOwnership = false;
+    //private bool isChangingOwnership = false;
+
 
 
     private string message_cache_type = "";
@@ -18,11 +19,11 @@ public class Network_Manager:NetworkBehaviour
         base.OnNetworkSpawn();
         if (IsOwner)
         {
-            _renderer.color = Color.red;
+            //_renderer.color = Color.red;
         }
         else
         {
-            _renderer.color = Color.blue;
+            //_renderer.color = Color.blue;
         }
     }
     // override public void OnGainedOwnership()
@@ -125,43 +126,5 @@ public class Network_Manager:NetworkBehaviour
 
 
 
-    private void OnEnable()
-    {
-        // 添加客户端连接事件监听器
-        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
-    }
-    private void OnClientConnected(ulong clientId)
-    {
-        // 客户端连接时被调用
-        Debug.Log($"Client connected with ClientId: {clientId}");
-        // 可以在这里调用发送消息的方法
-        SendMessageToClient(clientId, "Welcome to the server!");
-    }
 
-    [ClientRpc]
-    private void ReceiveMessageTypeClientRpc(string message, ClientRpcParams rpcParams = default)
-    {
-        Debug.Log("Received message: " + message);
-    }
-    [ClientRpc]
-    private void ReceiveMessageApparenceClientRpc(string message)// when receive appearance message change appearance
-    {
-        Debug.Log("Received message: " + message);
-    }
-
-    // 调用此方法来向指定的客户端发送消息
-    public void SendMessageToClient(ulong clientId, string message)
-    {
-        // 创建 ClientRpcParams 实例
-        var rpcParams = new ClientRpcParams
-        {
-            Send = new ClientRpcSendParams
-            {
-                TargetClientIds = new ulong[] { clientId }
-            }
-        };
-
-        // 调用 RPC，向特定客户端发送消息
-        ReceiveMessageTypeClientRpc(message, rpcParams);
-    }
 }

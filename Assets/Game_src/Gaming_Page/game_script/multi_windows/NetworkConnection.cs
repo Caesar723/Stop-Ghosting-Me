@@ -63,6 +63,7 @@ public class NetworkConnection : NetworkBehaviour
             await Task.Yield();
         }
         NetworkManager.Singleton.StartHost();
+        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         OnNetDone?.Invoke();
     }
     void OnGUI()
@@ -96,6 +97,66 @@ public class NetworkConnection : NetworkBehaviour
            NetworkManager.Singleton.NetworkConfig.NetworkTransport.GetType().Name);
         GUILayout.Label("Mode: " + mode);
     }
+
+
+    // private void Start()
+    // {
+    //     // 添加客户端连接事件监听器
+        
+    //     
+        
+    // }
+    private void OnClientConnected(ulong clientId)
+    {
+        // 客户端连接时被调用
+        Debug.Log(NetworkManager.Singleton.LocalClientId);
+        Debug.Log($"Client connected with ClientId: {clientId}");
+        // 可以在这里调用发送消息的方法
+        
+        SendMessageTypeToClient(clientId, "Welcome to the server!");
+        SendMessageApparenceToClient("Welcome to the server!Apparence");
+        
+        
+    }
+
+    [ClientRpc]
+    private void ReceiveMessageTypeClientRpc(string message, ClientRpcParams rpcParams = default)
+    {
+        Debug.Log("Received message: " + message);
+    }
+    [ClientRpc]
+    private void ReceiveMessageApparenceClientRpc(string message)// when receive appearance message change appearance
+    {
+        Debug.Log("Received message: " + message);
+    }
+
+    // 调用此方法来向指定的客户端发送消息
+    public void SendMessageTypeToClient(ulong clientId, string message)
+    {
+        // 创建 ClientRpcParams 实例
+        var rpcParams = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams
+            {
+                TargetClientIds = new ulong[] { clientId }
+            }
+        };
+
+        // 调用 RPC，向特定客户端发送消息
+        ReceiveMessageTypeClientRpc(message, rpcParams);
+    }
+    public void SendMessageApparenceToClient(string message){
+        // 向所有客户端发送消息
+        var rpcParams = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams
+            {
+                TargetClientIds = new ulong[] { NetworkManager.Singleton.LocalClientId }
+            }
+        };
+        ReceiveMessageApparenceClientRpc(message);
+    }
+    
 
 
     

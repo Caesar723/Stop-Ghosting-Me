@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
-
+using Unity.Netcode;
 public class ControllerWhitWindowPosition : MonoBehaviour
 {
     [SerializeField] WindowPositionGetter positionGetter;
     [SerializeField] Transform CameraRoot;
-    [SerializeField] float rateBetweenWindowsToGame;//1��Ӧ0.00342 100��Ӧ0.0343
+    [SerializeField] float rateBetweenWindowsToGame;//1Ӧ0.00342 100Ӧ0.0343
+    [SerializeField] Transform EnvironmentRoot;
     
     float rateBetweenWindowsToGameX, rateBetweenWindowsToGameY;
     bool isFocus = false;
-    public TextMeshProUGUI fpsText;
+    //public TextMeshProUGUI fpsText;
 
     private Vector3 offset;
     private Vector3 lastMousePosition;
@@ -26,40 +27,27 @@ public class ControllerWhitWindowPosition : MonoBehaviour
 
     private void Update()
     {
-        //Vector3 mousePosition = Input.mousePosition;
-        //Debug.Log("Mouse Position: ");
-    
-        // if(isFocus)
-        // {
-        //     CameraUpdate();
-        // }
-        //var pos = positionGetter.GetWindowPosition();
+        if(isFocus)
+        {
+            if (NetworkManager.Singleton.IsHost)
+            {
+                HostUpdate();
+            }
+            else
+            {
+                ClientUpdate();
+            }
+        }
+        
+    }
+    private void HostUpdate()
+    {
+        EnvironmentRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame + new Vector2(0.5f,0.5f);
+        CameraRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame ;
+    }
 
-        // if (pos == Vector2.zero)
-        // {
-        //     Debug.Log("zero");
-        //     return;
-        // }
-        //CameraRoot.transform.position = pos * rateBetweenWindowsToGame ;
-        //CameraUpdate();
-        //帧数
-        // if (Input.GetKey(KeyCode.W))
-        // {
-        //     CameraRoot.transform.position += new Vector3(0,0.2f,0);
-        // }
-        // if (Input.GetKey(KeyCode.S))
-        // {
-        //     CameraRoot.transform.position += new Vector3(0,-0.2f,0);
-        // }
-        // if (Input.GetKey(KeyCode.A))
-        // {
-        //     CameraRoot.transform.position += new Vector3(-0.2f,0,0);
-        // }
-        // if (Input.GetKey(KeyCode.D))
-        // {
-        //     CameraRoot.transform.position += new Vector3(0.2f,0,0);
-        // }
-        //当鼠标按下时
+    private void ClientUpdate()
+    {
         if(Input.GetMouseButtonDown(0))
         {
             offset=positionGetter.GetWindowPosition() ;
@@ -87,8 +75,8 @@ public class ControllerWhitWindowPosition : MonoBehaviour
         }
 
         //CameraUpdate();
-        //CameraRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame ;
-        
+        CameraRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame ;
+       
     }
     
     public void CameraUpdate(bool isOnlyOnce = false)
@@ -96,7 +84,7 @@ public class ControllerWhitWindowPosition : MonoBehaviour
         //Debug.Log(positionGetter.GetWindowPosition());
         //显示在左上角计时器计算与上一个帧的时间差
         var deltaTime = Time.unscaledDeltaTime;
-        fpsText.text = "FPS: " + 1.0f / deltaTime;
+        //fpsText.text = "FPS: " + 1.0f / deltaTime;
 
         var pos = positionGetter.GetWindowPosition();
         
