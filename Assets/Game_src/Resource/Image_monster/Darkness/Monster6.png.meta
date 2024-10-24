@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 0b6a2508fa79c46c58108405f0e43fa7
+guid: 4b5ff7e5f7fdcdf40a144127bea19612
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4137192967475247057
-    second: Eyes4_0
-  - first:
-      213: 3309924818956513399
-    second: Eyes4_1
+      213: -6693376857376439749
+    second: Monster6_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eyes4_0
+      name: Monster6_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 73
-        height: 72
+        width: 152
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f28c4667aecb596c0800000000000000
-      internalID: -4137192967475247057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eyes4_1
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 0
-        width: 73
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 770f62b06173fed20800000000000000
-      internalID: 3309924818956513399
+      spriteID: b32c14416395c13a0800000000000000
+      internalID: -6693376857376439749
       vertices: []
       indices: 
       edges: []
