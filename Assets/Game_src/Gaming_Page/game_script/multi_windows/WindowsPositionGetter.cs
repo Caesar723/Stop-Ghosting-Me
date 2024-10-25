@@ -37,6 +37,11 @@ public class WindowPositionGetter : MonoBehaviour
     [DllImport("user32.dll")]
     private static extern bool GetCursorPos(out POINT lpPoint);
 
+
+
+
+
+
     private IntPtr nowWindow;
     [Serializable]
     private struct RECT
@@ -46,6 +51,7 @@ public class WindowPositionGetter : MonoBehaviour
         public int right;
         public int bottom;
     }
+    [Serializable]
     private struct POINT
     {
         public int X;
@@ -124,7 +130,7 @@ public class WindowPositionGetter : MonoBehaviour
         #endif
     }
 
-    const int ScreenSizeX = 800, ScreenSizeY = 600;
+    const int ScreenSizeX = 1920/2, ScreenSizeY = 1080/2;
 
     public void SetWindowsPositionToCenter()
     {
@@ -139,10 +145,25 @@ public class WindowPositionGetter : MonoBehaviour
         SetWindowPos(nowWindow, 0, (int)pos.x, (int)pos.y - GetWindowBarHeight() / 2,
             ScreenSizeX, ScreenSizeY + GetWindowBarHeight(), SWP_NOOWNERZORDER | SWP_NOSIZE);
         #elif UNITY_STANDALONE_OSX
-        SetWindowSize(ScreenSizeX, ScreenSizeY + GetWindowBarHeight());
+        //SetWindowSize(ScreenSizeX, ScreenSizeY + GetWindowBarHeight());
         SetWindowPosition(pos.x, pos.y - GetWindowBarHeight() / 2);
         #endif
     }
+    public void SetWindowSize(int width, int height)
+    {
+        #if UNITY_STANDALONE_WIN
+        const uint SWP_NOOWNERZORDER = 0x0200;
+        const uint SWP_NOMOVE = 0x0002;
+        SetWindowPos(nowWindow, 0, 0, 0, width, height + GetWindowBarHeight(), SWP_NOOWNERZORDER | SWP_NOMOVE);
+        #elif UNITY_STANDALONE_OSX
+        SetWindowSize(width, height + GetWindowBarHeight());
+        #endif
+    }
+    public float GetWindowBarHeightPublic()
+    {
+        return GetWindowBarHeight();
+    }
+
 
     #if UNITY_STANDALONE_WIN
     public static int GetWindowBarHeight()
@@ -156,7 +177,6 @@ public class WindowPositionGetter : MonoBehaviour
         return borderWidth + titleBarHeight;
     }
 
-    
 
     public static IntPtr GetProcessWndWin()
     {

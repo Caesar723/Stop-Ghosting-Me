@@ -10,11 +10,14 @@ public class NetworkConnection : NetworkBehaviour
 {
     private float nowTime = 10f;
     public static event Action OnNetDone;
-    
+    [SerializeField] WindowPositionGetter positionGetter;
+    public Camera mainCamera;
+    public float fixedOrthographicSize = 5.0f; // 固定的相机正交大小
     
     //[SceneName] public string firstScene;
     private async void Start()
     {
+        
         if(NetworkManager.Singleton.IsConnectedClient || IsHost)
         {
             return;
@@ -39,6 +42,7 @@ public class NetworkConnection : NetworkBehaviour
         if (NetworkManager.Singleton.IsConnectedClient)
         {
             Debug.Log("HasServer");
+            start_become_client();
             OnNetDone?.Invoke();
         }
         else
@@ -63,7 +67,7 @@ public class NetworkConnection : NetworkBehaviour
             await Task.Yield();
         }
         NetworkManager.Singleton.StartHost();
-        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+        start_become_host();
         OnNetDone?.Invoke();
     }
     void OnGUI()
@@ -106,6 +110,17 @@ public class NetworkConnection : NetworkBehaviour
     //     
         
     // }
+    private void start_become_host()
+    {
+        positionGetter.SetWindowSize(1960/2,1080/2);
+        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+    }
+    private void start_become_client()
+    {
+        positionGetter.SetWindowSize(100,100);
+        //mainCamera.orthographicSize = fixedOrthographicSize/(599/100);
+        
+    }
     private void OnClientConnected(ulong clientId)
     {
         // 客户端连接时被调用
@@ -129,6 +144,8 @@ public class NetworkConnection : NetworkBehaviour
     {
         Debug.Log("Received message: " + message);
     }
+
+
 
     // 调用此方法来向指定的客户端发送消息
     public void SendMessageTypeToClient(ulong clientId, string message)
