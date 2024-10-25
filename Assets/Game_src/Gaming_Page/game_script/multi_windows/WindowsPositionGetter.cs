@@ -109,7 +109,7 @@ public class WindowPositionGetter : MonoBehaviour
     {
         #if UNITY_STANDALONE_WIN
         GetWindowRect(nowWindow, out RECT rect);
-        windowPosition = new Vector2(rect.left + (rect.right - rect.left) / 2, rect.top + (rect.bottom - rect.top) / 2);
+        windowPosition = new Vector2(rect.left + (rect.right - rect.left) / 2, -rect.top - (rect.bottom - rect.top) / 2);
         #elif UNITY_STANDALONE_OSX
         float x, y;
         GetWindowPosition(out x, out y);
@@ -123,7 +123,7 @@ public class WindowPositionGetter : MonoBehaviour
         #if UNITY_STANDALONE_WIN
         POINT point;
         GetCursorPos(out point);
-        return new Vector2(point.x, point.y);
+        return new Vector2(point.X, point.Y);
         #elif UNITY_STANDALONE_OSX
         float x, y;
         GetCursorPosition(out x, out y);

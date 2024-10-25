@@ -29,7 +29,12 @@ public class ControllerWhitWindowPosition : MonoBehaviour
         offset=positionGetter.GetWindowPosition() ;
         
         //InvokeRepeating("CameraUpdate",0.5f,0.05f);
-        offset_window=main_window_size/2-small_window_size/2+new Vector3(5.5f,0,0);
+        #if UNITY_STANDALONE_WIN
+            offset_window=new Vector3(0,0,0);
+        #endif
+        #if UNITY_STANDALONE_OSX
+            offset_window=main_window_size/2-small_window_size/2+new Vector3(5.5f,0,0);
+        #endif
     }
 
     private void Update()
@@ -75,6 +80,9 @@ public class ControllerWhitWindowPosition : MonoBehaviour
                 Vector3 cursorPosition = new Vector3(positionGetter.GetCursorPosition().x,positionGetter.GetCursorPosition().y,0);
                 Vector3 lastMousePosition2 = new Vector3(lastMousePosition.x,lastMousePosition.y,0);
                 Vector3 deltaMousePosition = cursorPosition - lastMousePosition2;
+                // #if UNITY_STANDALONE_WIN
+                // deltaMousePosition.y = -deltaMousePosition.y;
+                // #endif
                 CameraRoot.transform.position = (offset + deltaMousePosition-offset_window) * rateBetweenWindowsToGame;
                 //位置是offset + deltaMousePosition Vector2
                 //Debug.Log("offset + deltaMousePosition: "+new Vector2(offset.x + deltaMousePosition.x*rateBetweenWindowsToGame*2,offset.y + deltaMousePosition.y*rateBetweenWindowsToGame*2));
