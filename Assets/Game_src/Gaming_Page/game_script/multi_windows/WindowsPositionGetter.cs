@@ -76,7 +76,8 @@ public class WindowPositionGetter : MonoBehaviour
     [DllImport("MacWindowPlugin")]
     private static extern float GetWindowBarHeight();
 
-
+    [DllImport("__Internal")]
+    private static extern void OpenSelfApp(string appPath);
     
 
     [DllImport("MacWindowPlugin")]

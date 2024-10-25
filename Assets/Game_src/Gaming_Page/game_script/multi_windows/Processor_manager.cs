@@ -9,6 +9,19 @@ public class Processor_manager : NetworkBehaviour
     private Process exeProcess;
 
     // 启动 exe 文件
+
+    public string GetExePath(){
+        #if UNITY_STANDALONE_WIN
+            string exePath = Application.dataPath.Replace("_Data", ".exe");
+            return exePath;
+        #endif
+        #if UNITY_STANDALONE_OSX
+            string exePath = Application.dataPath.Replace("_Data", ".app");
+            string appPath = exePath.Substring(0, exePath.LastIndexOf(".app") + 4);
+            return appPath;
+        #endif
+        
+    }
     public void OpenExe()
     {
         if (!IsHost)
@@ -17,31 +30,31 @@ public class Processor_manager : NetworkBehaviour
             return;
         }
 
-        string exePath;
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-        {
-            exePath = Application.dataPath.Replace("_Data", ".exe");
-        }
-        else if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-        {
-            exePath = Application.dataPath.Replace("_Data", ".app");
-        }
-        else
-        {
-            UnityEngine.Debug.LogError("不支持的操作系统");
-            return;
-        }
+        string exePath = GetExePath();
 
-        if (File.Exists(exePath))
-        {
-            // 启动 exe 并保存进程对象
-            exeProcess = Process.Start(exePath);
-            UnityEngine.Debug.Log("重新打开文件: " + exePath);
-        }
-        else
-        {
-            UnityEngine.Debug.LogError("未找到文件");
-        }
+        #if UNITY_STANDALONE_OSX
+            var psi = new ProcessStartInfo
+            {
+                FileName = "open",
+                Arguments = $"-n \"{exePath}\"",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                CreateNoWindow = true,
+            };
+            Process.Start(psi);
+        #endif  
+
+        #if UNITY_STANDALONE_WIN
+            var psi = new ProcessStartInfo
+            {
+                FileName = exePath,
+                UseShellExecute = true,
+                CreateNoWindow = true,
+            };
+            Process.Start(psi);
+        #endif
+        
     }
 
     // 关闭 exe 进程
