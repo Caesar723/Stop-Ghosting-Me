@@ -12,10 +12,12 @@ public class ControllerWhitWindowPosition : MonoBehaviour
     [SerializeField] float rateBetweenWindowsToGame;//1Ӧ0.00342 100Ӧ0.0343
     [SerializeField] float fixedOrthographicSize;
     [SerializeField] Transform EnvironmentRoot;
+    [SerializeField] NetworkConnection networkConnection;
     
     
     float rateBetweenWindowsToGameX, rateBetweenWindowsToGameY;
     bool isFocus = false;
+
     //public TextMeshProUGUI fpsText;
 
     private Vector3 offset;
@@ -27,8 +29,8 @@ public class ControllerWhitWindowPosition : MonoBehaviour
 
     private void Start()
     {
-        positionGetter.SetWindowsPosition(new Vector2(1920/2,1080/2));
-        offset=new Vector3(1920/2,1080/2,0);//positionGetter.GetWindowPosition() ;
+        positionGetter.SetWindowsPositionToCenter();
+        offset=positionGetter.GetWindowPosition();//positionGetter.GetWindowPosition() ;
         
         //InvokeRepeating("CameraUpdate",0.5f,0.05f);
         #if UNITY_STANDALONE_WIN
@@ -43,11 +45,11 @@ public class ControllerWhitWindowPosition : MonoBehaviour
     {
         if(isFocus)
         {
-            if (NetworkManager.Singleton.IsHost)
+            if (networkConnection.isHost_Connect)
             {
                 HostUpdate();
             }
-            else
+            else if(networkConnection.isClient_Connect)
             {
                 ClientUpdate();
             }

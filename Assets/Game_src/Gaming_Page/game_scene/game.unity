@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &574057736
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1337,7 +1337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &910316409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2007,7 +2007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1209757606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3218,7 +3218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1901899174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3275,6 +3275,7 @@ MonoBehaviour:
   rateBetweenWindowsToGame: 0.0183
   fixedOrthographicSize: 540
   EnvironmentRoot: {fileID: 1196429605}
+  networkConnection: {fileID: 2105440243}
 --- !u!114 &1983807402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3501,6 +3502,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   positionGetter: {fileID: 1983807402}
   mainCamera: {fileID: 1456029660}
+  isHost_Connect: 0
+  isClient_Connect: 0
   character_apperance: {fileID: 1573615208}
   fixedOrthographicSize: 5
   Front_wall: {fileID: 0}

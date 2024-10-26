@@ -12,6 +12,8 @@ public class NetworkConnection : NetworkBehaviour
     public static event Action OnNetDone;
     [SerializeField] WindowPositionGetter positionGetter;
     public Camera mainCamera;
+    public bool isHost_Connect = false;
+    public bool isClient_Connect = false;
     public Character_apperance character_apperance;
     public float fixedOrthographicSize = 5.0f; // 固定的相机正交大小
     [SerializeField] GameObject Front_wall;
@@ -114,12 +116,14 @@ public class NetworkConnection : NetworkBehaviour
     // }
     private void start_become_host()
     {
+        isHost_Connect = true;
         positionGetter.SetWindowSize(1960/2,1080/2);
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         //character_apperance.ChangeAppearance(true);
     }
     private void start_become_client()
     {
+        isClient_Connect = true;
         Front_wall.SetActive(false);
         positionGetter.SetWindowSize(100,100);
         //mainCamera.orthographicSize = fixedOrthographicSize/(599/100);
