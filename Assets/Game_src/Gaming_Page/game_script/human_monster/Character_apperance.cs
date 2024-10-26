@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System.IO;
 
-class Character_apperance:MonoBehaviour
+public class Character_apperance:MonoBehaviour
 {
     //this is for the character appearance
     [SerializeField] GameObject General;
@@ -34,63 +34,63 @@ class Character_apperance:MonoBehaviour
 
 
 
-    private int camera_type=0;//0:General, 1:X_ray, 2:Temperature, 3:High_pitch, 4:Dark, 5:Gailic_smile
+    private string camera_type="0";//0:General, 1:X_ray, 2:Temperature, 3:High_pitch, 4:Dark, 5:Gailic_smile
 
     //image path of each part
     //is 2d array first is for human second is for monster
     private List<List<string>> Body_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/General/body/Body1.png", "Assets/Game_src/Resource/Image_human/General/body/Body2.png","Assets/Game_src/Resource/Image_human/General/body/Body3.png","Assets/Game_src/Resource/Image_human/General/body/Body4.png" }, // human
+        new List<string>() { "Image_human/General/body/Body1", "Image_human/General/body/Body2","Image_human/General/body/Body3","Image_human/General/body/Body4" }, // human
         new List<string>() {}  // monster
     };
 
     private List<List<string>> Face_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/General/face/Face1.png", "Assets/Game_src/Resource/Image_human/General/face/Face2.png","Assets/Game_src/Resource/Image_human/General/face/Face3.png","Assets/Game_src/Resource/Image_human/General/face/Face4.png" },
+        new List<string>() { "Image_human/General/face/Face1", "Image_human/General/face/Face2","Image_human/General/face/Face3","Image_human/General/face/Face4" },
         new List<string>() {}
     };
 
     private List<List<string>> Eyes_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/General/eyes/Eyes1.png", "Assets/Game_src/Resource/Image_human/General/eyes/Eyes2.png","Assets/Game_src/Resource/Image_human/General/eyes/Eyes3.png","Assets/Game_src/Resource/Image_human/General/eyes/Eyes4.png","Assets/Game_src/Resource/Image_human/General/eyes/Eyes5.png" },
+        new List<string>() { "Image_human/General/eyes/Eyes1", "Image_human/General/eyes/Eyes2","Image_human/General/eyes/Eyes3","Image_human/General/eyes/Eyes4","Image_human/General/eyes/Eyes5" },
         new List<string>() { }
     };
     private List<List<string>> Eyes_blink_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/General/eyes/Eyes1.1.png", "Assets/Game_src/Resource/Image_human/General/eyes/Eyes2.1.png","Assets/Game_src/Resource/Image_human/General/eyes/Eyes3.1.png","Assets/Game_src/Resource/Image_human/General/eyes/Eyes4.1.png","Assets/Game_src/Resource/Image_human/General/eyes/Eyes5.1.png" },
+        new List<string>() { "Image_human/General/eyes/Eyes1.1", "Image_human/General/eyes/Eyes2.1","Image_human/General/eyes/Eyes3.1","Image_human/General/eyes/Eyes4.1","Image_human/General/eyes/Eyes5.1" },
         new List<string>() { }
     };
 
     private List<List<string>> Mouth_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/General/mouth/Mouth1.png", "Assets/Game_src/Resource/Image_human/General/mouth/Mouth2.png","Assets/Game_src/Resource/Image_human/General/mouth/Mouth3.png","Assets/Game_src/Resource/Image_human/General/mouth/Mouth4.png","Assets/Game_src/Resource/Image_human/General/mouth/Mouth5.png" },
+        new List<string>() { "Image_human/General/mouth/Mouth1", "Image_human/General/mouth/Mouth2","Image_human/General/mouth/Mouth3","Image_human/General/mouth/Mouth4","Image_human/General/mouth/Mouth5" },
         new List<string>() { }
     };
 
     private List<List<string>> Hair_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/General/hair/Hair1.png", "Assets/Game_src/Resource/Image_human/General/hair/Hair2.png", "Assets/Game_src/Resource/Image_human/General/hair/Hair3.png", "Assets/Game_src/Resource/Image_human/General/hair/Hair4.png" },
+        new List<string>() { "Image_human/General/hair/Hair1", "Image_human/General/hair/Hair2", "Image_human/General/hair/Hair3", "Image_human/General/hair/Hair4" },
         new List<string>() { }
     };
     private List<List<string>> Nose_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/General/nose/Nose1.png", "Assets/Game_src/Resource/Image_human/General/nose/Nose2.png","Assets/Game_src/Resource/Image_human/General/nose/Nose3.png","Assets/Game_src/Resource/Image_human/General/nose/Nose4.png" },
+        new List<string>() { "Image_human/General/nose/Nose1", "Image_human/General/nose/Nose2","Image_human/General/nose/Nose3","Image_human/General/nose/Nose4" },
         new List<string>() { }
     };
     private List<List<string>> X_ray_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/X-ray/Human_skeleton.png" },
-        new List<string>() { "Assets/Game_src/Resource/Image_monster/X-ray/Monster_skeleton1.png", "Assets/Game_src/Resource/Image_monster/X-ray/Monster_skeleton2.png","Assets/Game_src/Resource/Image_monster/X-ray/Monster_skeleton3.png","Assets/Game_src/Resource/Image_monster/X-ray/Monster_skeleton4.png" }
+        new List<string>() { "Image_human/X-ray/Human_skeleton" },
+        new List<string>() { "Image_monster/X-ray/Monster_skeleton1", "Image_monster/X-ray/Monster_skeleton2","Image_monster/X-ray/Monster_skeleton3","Image_monster/X-ray/Monster_skeleton4" }
     };
     private List<List<string>> Temperature_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/Heat/Human_skeleton_heat.png" },
-        new List<string>() { "Assets/Game_src/Resource/Image_monster/Heat/Monster_skeleton_heat1.png", "Assets/Game_src/Resource/Image_monster/Heat/Monster_skeleton_heat2.png" }
+        new List<string>() { "Image_human/Heat/Human_skeleton_heat" },
+        new List<string>() { "Image_monster/Heat/Monster_skeleton_heat1", "Image_monster/Heat/Monster_skeleton_heat2" }
     };
     private List<List<string>> High_pitch_path = new List<List<string>>()
     {
-        new List<string>() { "Assets/Game_src/Resource/Image_human/High-pitch/Human_skeleton_sound.png" },
-        new List<string>() { "Assets/Game_src/Resource/Image_monster/High-pitch/Monster_skeleton_sound1.png", "Assets/Game_src/Resource/Image_monster/High-pitch/Monster_skeleton_sound2.png","Assets/Game_src/Resource/Image_monster/High-pitch/Monster_skeleton_sound3.png" }
+        new List<string>() { "Image_human/High-pitch/Human_skeleton_sound" },
+        new List<string>() { "Image_monster/High-pitch/Monster_skeleton_sound1", "Image_monster/High-pitch/Monster_skeleton_sound2","Image_monster/High-pitch/Monster_skeleton_sound3" }
     };
     private List<List<string>> Dark_path = new List<List<string>>()
     {
@@ -103,26 +103,39 @@ class Character_apperance:MonoBehaviour
         new List<string>() { }
     };
 
+    private string body_path = "";
+    private string face_path = "";
+    private string eyes_path = "";
+    private string eyes_blink_path = "";
+    private string mouth_path = "";
+    private string hair_path = "";
+    private string nose_path = "";
+    private string x_ray_path = "";
+    private string temperature_path = "";
+    private string high_pitch_path = "";
+    private string dark_path = "";
+    private string gailic_smile_path = "";
+
 
     public void Start()
     {
         CheckCameraType(camera_type);
-        ChangeAppearance(false);
+        ChangeAppearance(true);
         
     }
 
     public void ChangeAppearance(bool is_monster)
     {
-        string body_path = "";
-        string face_path = "";
-        string mouth_path = "";
-        string hair_path = "";
-        string nose_path = "";
-        string x_ray_path = "";
-        string temperature_path = "";
-        string high_pitch_path = "";
-        string dark_path = "";
-        string gailic_smile_path = "";
+        // string body_path = "";
+        // string face_path = "";
+        // string mouth_path = "";
+        // string hair_path = "";
+        // string nose_path = "";
+        // string x_ray_path = "";
+        // string temperature_path = "";
+        // string high_pitch_path = "";
+        // string dark_path = "";
+        // string gailic_smile_path = "";
         Is_Monster = is_monster;
         if(is_monster)
         {
@@ -157,8 +170,10 @@ class Character_apperance:MonoBehaviour
             dark_path = GetRandomPath(Dark_path, 0).path;
             gailic_smile_path = GetRandomPath(Gailic_smile_path, 0).path;
         }
-        var (eyes_path, eyes_index) = GetRandomPath(Eyes_path, 0);
-        string eyes_blink_path =Eyes_blink_path[0][eyes_index];
+
+        var (eyes_path_get, eyes_index) = GetRandomPath(Eyes_path, 0);
+        eyes_path = eyes_path_get;
+        eyes_blink_path =Eyes_blink_path[0][eyes_index];
        
         ChangeImage(body_path, face_path, eyes_path, eyes_blink_path, mouth_path, hair_path, nose_path, x_ray_path, temperature_path, high_pitch_path);//, dark_path, gailic_smile_path);
 
@@ -181,30 +196,10 @@ class Character_apperance:MonoBehaviour
     private void LoadSpriteFromPath(string path, SpriteRenderer spriteRenderer)
     {
         // 检查文件是否存在
-        if (File.Exists(path))
-        {
-            // 从指定路径读取文件数据
-            byte[] fileData = File.ReadAllBytes(path);
-
-            // 创建一个新的 Texture2D 并加载图片数据
-            Texture2D texture = new Texture2D(2, 2);
-            if (texture.LoadImage(fileData))
-            {
-                // 将 Texture2D 转换为 Sprite
-                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-
-                // 将生成的 Sprite 赋值给传入的 SpriteRenderer
-                spriteRenderer.sprite = sprite;
-            }
-            else
-            {
-                Debug.LogError("Failed to load image data into Texture2D.");
-            }
-        }
-        else
-        {
-            Debug.LogError("File not found at path: " + path);
-        }
+  
+        spriteRenderer.sprite = Resources.Load<Sprite>(path);
+        
+        
     }
     private (string path, string type) GetMonsterPath()
     {
@@ -265,11 +260,11 @@ class Character_apperance:MonoBehaviour
     }
 
 
-    public void CheckCameraType(int type)
+    public void CheckCameraType(string type)
     {
         switch(type)
         {
-            case 0:
+            case "0":
                 General.SetActive(true);
                 X_ray.SetActive(false);
                 Temperature.SetActive(false);
@@ -277,7 +272,7 @@ class Character_apperance:MonoBehaviour
                 Dark.SetActive(false);
                 Gailic_smile.SetActive(false);
                 break;
-            case 1:
+            case "1":
                 X_ray.SetActive(true);
                 General.SetActive(false);
                 Temperature.SetActive(false);
@@ -285,7 +280,7 @@ class Character_apperance:MonoBehaviour
                 Dark.SetActive(false);
                 Gailic_smile.SetActive(false);
                 break;
-            case 2:
+            case "2":
                 Temperature.SetActive(true);
                 General.SetActive(false);
                 X_ray.SetActive(false);
@@ -293,7 +288,7 @@ class Character_apperance:MonoBehaviour
                 Dark.SetActive(false);
                 Gailic_smile.SetActive(false);
                 break;
-            case 3:
+            case "3":
                 High_pitch.SetActive(true);
                 General.SetActive(false);
                 X_ray.SetActive(false);
@@ -301,7 +296,7 @@ class Character_apperance:MonoBehaviour
                 Dark.SetActive(false);
                 Gailic_smile.SetActive(false);
                 break;
-            case 4:
+            case "4":
                 Dark.SetActive(true);
                 General.SetActive(false);
                 X_ray.SetActive(false);
@@ -309,7 +304,7 @@ class Character_apperance:MonoBehaviour
                 High_pitch.SetActive(false);
                 Gailic_smile.SetActive(false);
                 break;
-            case 5:
+            case "5":
                 Gailic_smile.SetActive(true);
                 General.SetActive(false);
                 X_ray.SetActive(false);
@@ -321,5 +316,33 @@ class Character_apperance:MonoBehaviour
                 break;
         }
     }
+
+    public void SetAppearance(string appearance)
+    {
+        string[] parts = appearance.Split(',');
+        Debug.Log("Appearance: " + appearance);
+        Debug.Log("Parts: " + parts.Length);
+        body_path = parts[0];
+        face_path = parts[1];
+        eyes_path = parts[2];
+        eyes_blink_path = parts[3];
+        mouth_path = parts[4];
+        hair_path = parts[5];
+        nose_path = parts[6];
+        x_ray_path = parts[7];
+        temperature_path = parts[8];
+        high_pitch_path = parts[9];
+        //dark_path = parts[10];
+        //gailic_smile_path = parts[11];
+        ChangeImage(body_path, face_path, eyes_path, eyes_blink_path, mouth_path, hair_path, nose_path, x_ray_path, temperature_path, high_pitch_path);
+    }
+
+    public string GetAppearance()
+    {
+        Debug.Log("GetAppearance: " + body_path + "," + face_path + "," + eyes_path + "," + eyes_blink_path + "," + mouth_path + "," + hair_path + "," + nose_path + "," + x_ray_path + "," + temperature_path + "," + high_pitch_path);
+        return body_path + "," + face_path + "," + eyes_path + "," + eyes_blink_path + "," + mouth_path + "," + hair_path + "," + nose_path + "," + x_ray_path + "," + temperature_path + "," + high_pitch_path;
+    }
+    
+    
     
 }

@@ -12,6 +12,7 @@ public class NetworkConnection : NetworkBehaviour
     public static event Action OnNetDone;
     [SerializeField] WindowPositionGetter positionGetter;
     public Camera mainCamera;
+    public Character_apperance character_apperance;
     public float fixedOrthographicSize = 5.0f; // 固定的相机正交大小
     
     //[SceneName] public string firstScene;
@@ -114,6 +115,7 @@ public class NetworkConnection : NetworkBehaviour
     {
         positionGetter.SetWindowSize(1960/2,1080/2);
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+        //character_apperance.ChangeAppearance(true);
     }
     private void start_become_client()
     {
@@ -128,8 +130,8 @@ public class NetworkConnection : NetworkBehaviour
         Debug.Log($"Client connected with ClientId: {clientId}");
         // 可以在这里调用发送消息的方法
         
-        SendMessageTypeToClient(clientId, "Welcome to the server!");
-        SendMessageApparenceToClient("Welcome to the server!Apparence");
+        SendMessageTypeToClient(clientId, "1");
+        SendMessageApparenceToClient(character_apperance.GetAppearance());
         
         
     }
@@ -137,12 +139,17 @@ public class NetworkConnection : NetworkBehaviour
     [ClientRpc]
     private void ReceiveMessageTypeClientRpc(string message, ClientRpcParams rpcParams = default)
     {
+        character_apperance.CheckCameraType(message);
         Debug.Log("Received message: " + message);
     }
     [ClientRpc]
     private void ReceiveMessageApparenceClientRpc(string message)// when receive appearance message change appearance
-    {
-        Debug.Log("Received message: " + message);
+    {   
+        if (!IsHost)
+        {
+            Debug.Log("Received message: " + message);
+            character_apperance.SetAppearance(message);
+        }
     }
 
 
