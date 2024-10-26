@@ -69,7 +69,7 @@ public class Character_apperance:MonoBehaviour
 
     private List<List<string>> Hair_path = new List<List<string>>()
     {
-        new List<string>() { "Image_human/General/hair/Hair1", "Image_human/General/hair/Hair2", "Image_human/General/hair/Hair3", "Image_human/General/hair/Hair4" },
+        new List<string>() { "Image_human/General/hair/Hair1", "Image_human/General/hair/Hair2", "Image_human/General/hair/Hair3", "Image_human/General/hair/Hair4"},
         new List<string>() { }
     };
     private List<List<string>> Nose_path = new List<List<string>>()
@@ -102,6 +102,35 @@ public class Character_apperance:MonoBehaviour
         new List<string>() { },
         new List<string>() { }
     };
+
+    private Dictionary<string, Vector2> partPositions = new Dictionary<string, Vector2>()
+{
+    // hair positions
+    { "Image_human/General/hair/Hair1", new Vector2(-1.5f, 105f) },
+    { "Image_human/General/hair/Hair2", new Vector2(1.6f, 104f) },
+    { "Image_human/General/hair/Hair3", new Vector2(0f, 109f) },
+    { "Image_human/General/hair/Hair4", new Vector2(0f, 98f) },
+
+    // face positions
+    { "Image_human/General/face/Face1", new Vector2(0f, 67f) },
+    { "Image_human/General/face/Face2", new Vector2(0f, 64f) },
+    { "Image_human/General/face/Face3", new Vector2(0f, 62f) },
+    { "Image_human/General/face/Face4", new Vector2(0f, 64f) },
+
+    // mouth positions
+    { "Image_human/General/mouth/Mouth1", new Vector2(0f, 28.5f) },
+    { "Image_human/General/mouth/Mouth2", new Vector2(0f, 28.5f) },
+    { "Image_human/General/mouth/Mouth3", new Vector2(0f, 32f) },
+    { "Image_human/General/mouth/Mouth4", new Vector2(1.5f, 30.6f) },
+    { "Image_human/General/mouth/Mouth5", new Vector2(0f, 30f) },
+
+    // body positions
+    { "Image_human/General/body/Body1", new Vector2(0.25f, 0f) },
+    { "Image_human/General/body/Body2", new Vector2(-1.5f, -5f) },
+    { "Image_human/General/body/Body3", new Vector2(-1.5f, -3f) },
+    { "Image_human/General/body/Body4", new Vector2(1.5f, -4.5f) }
+};
+
 
     private string body_path = "";
     private string face_path = "";
@@ -162,7 +191,13 @@ public class Character_apperance:MonoBehaviour
             face_path = GetRandomPath(Face_path, 0).path;
             
             mouth_path = GetRandomPath(Mouth_path, 0).path;
-            hair_path = GetRandomPath(Hair_path, 0).path;
+
+            // hair rando (including bald)
+            int hair_number = Random.Range(1, 6);
+            Debug.Log(hair_number);
+            if (hair_number != 5) hair_path = GetRandomPath(Hair_path, 0).path;
+            else hair_path = "";
+
             nose_path = GetRandomPath(Nose_path, 0).path;
             x_ray_path = GetRandomPath(X_ray_path, 0).path;
             temperature_path = GetRandomPath(Temperature_path, 0).path;
@@ -178,7 +213,8 @@ public class Character_apperance:MonoBehaviour
         ChangeImage(body_path, face_path, eyes_path, eyes_blink_path, mouth_path, hair_path, nose_path, x_ray_path, temperature_path, high_pitch_path);//, dark_path, gailic_smile_path);
 
     }
-    private void ChangeImage(string body_path, string face_path, string eyes_path, string eyes_blink_path, string mouth_path, string hair_path, string nose_path, string x_ray_path, string temperature_path, string high_pitch_path)//, string dark_path, string gailic_smile_path
+
+    private void ChangeImage(string body_path, string face_path, string eyes_path, string eyes_blink_path, string mouth_path, string hair_path, string nose_path, string x_ray_path, string temperature_path, string high_pitch_path)
     {
         LoadSpriteFromPath(body_path, Body_part);
         LoadSpriteFromPath(face_path, Face_part);
@@ -192,7 +228,27 @@ public class Character_apperance:MonoBehaviour
         LoadSpriteFromPath(high_pitch_path, High_pitch_part);
         //Dark.GetComponent<Image>().sprite = Resources.Load<Sprite>(dark_path);
         //Gailic_smile.GetComponent<Image>().sprite = Resources.Load<Sprite>(gailic_smile_path);
+
+        // positions
+        SetPartPosition(body_path, Body_part);
+        SetPartPosition(face_path, Face_part);
+        SetPartPosition(mouth_path, Mouth_part);
+        SetPartPosition(hair_path, Hair_part);
     }
+
+    private void SetPartPosition(string path, SpriteRenderer spriteRenderer)
+    {
+        if (partPositions.ContainsKey(path))
+        {
+            spriteRenderer.transform.localPosition = partPositions[path];
+        }
+        else
+        {
+            // default position if can't be found in the dictionary
+            spriteRenderer.transform.localPosition = Vector2.zero;
+        }
+    }
+
     private void LoadSpriteFromPath(string path, SpriteRenderer spriteRenderer)
     {
         // 检查文件是否存在
