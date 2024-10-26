@@ -26,6 +26,7 @@ public class ControllerWhitWindowPosition : MonoBehaviour
 
     private void Start()
     {
+        positionGetter.SetWindowsPosition(new Vector2(1920/2,1080/2));
         offset=positionGetter.GetWindowPosition() ;
         
         //InvokeRepeating("CameraUpdate",0.5f,0.05f);
@@ -70,6 +71,7 @@ public class ControllerWhitWindowPosition : MonoBehaviour
         {
             offset=positionGetter.GetWindowPosition() ;
             lastMousePosition=positionGetter.GetCursorPosition();
+            
             isDragging=true;
         }
         if(Input.GetMouseButton(0))
