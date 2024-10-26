@@ -13,6 +13,7 @@ public class ControllerWhitWindowPosition : MonoBehaviour
     [SerializeField] float fixedOrthographicSize;
     [SerializeField] Transform EnvironmentRoot;
     
+    
     float rateBetweenWindowsToGameX, rateBetweenWindowsToGameY;
     bool isFocus = false;
     //public TextMeshProUGUI fpsText;
@@ -27,7 +28,7 @@ public class ControllerWhitWindowPosition : MonoBehaviour
     private void Start()
     {
         positionGetter.SetWindowsPosition(new Vector2(1920/2,1080/2));
-        offset=positionGetter.GetWindowPosition() ;
+        offset=new Vector3(1920/2,1080/2,0);//positionGetter.GetWindowPosition() ;
         
         //InvokeRepeating("CameraUpdate",0.5f,0.05f);
         #if UNITY_STANDALONE_WIN
@@ -57,7 +58,7 @@ public class ControllerWhitWindowPosition : MonoBehaviour
     {
         positionGetter.SetWindowSize(1960/2,1080/2);
         mainCamera.orthographicSize =5;
-        EnvironmentRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame + new Vector2(0.5f,0.5f);
+        EnvironmentRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame + new Vector2(-1.5f,1.5f);
         CameraRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame ;
 
         Debug.Log(positionGetter.GetWindowBarHeightPublic());
@@ -88,7 +89,12 @@ public class ControllerWhitWindowPosition : MonoBehaviour
                 CameraRoot.transform.position = (offset + deltaMousePosition-offset_window) * rateBetweenWindowsToGame;
                 //位置是offset + deltaMousePosition Vector2
                 //Debug.Log("offset + deltaMousePosition: "+new Vector2(offset.x + deltaMousePosition.x*rateBetweenWindowsToGame*2,offset.y + deltaMousePosition.y*rateBetweenWindowsToGame*2));
-                positionGetter.SetWindowsPosition(new Vector2(offset.x + deltaMousePosition.x,offset.y + deltaMousePosition.y));
+                #if UNITY_STANDALONE_WIN
+                    positionGetter.SetWindowsPosition(new Vector2(offset.x + deltaMousePosition.x,-offset.y + deltaMousePosition.y));
+                #endif
+                #if UNITY_STANDALONE_OSX
+                    positionGetter.SetWindowsPosition(new Vector2(offset.x + deltaMousePosition.x,offset.y + deltaMousePosition.y));
+                #endif
             }
         }
         if(Input.GetMouseButtonUp(0))
@@ -100,6 +106,8 @@ public class ControllerWhitWindowPosition : MonoBehaviour
         //CameraUpdate();
 
         CameraRoot.transform.position = (positionGetter.GetWindowPosition()- new Vector2(offset_window.x,offset_window.y)) * rateBetweenWindowsToGame ;
+       
+        
        
     }
     

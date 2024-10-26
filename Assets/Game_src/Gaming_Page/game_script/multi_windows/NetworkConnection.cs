@@ -14,6 +14,7 @@ public class NetworkConnection : NetworkBehaviour
     public Camera mainCamera;
     public Character_apperance character_apperance;
     public float fixedOrthographicSize = 5.0f; // 固定的相机正交大小
+    [SerializeField] GameObject Front_wall;
     
     //[SceneName] public string firstScene;
     private async void Start()
@@ -119,6 +120,7 @@ public class NetworkConnection : NetworkBehaviour
     }
     private void start_become_client()
     {
+        Front_wall.SetActive(false);
         positionGetter.SetWindowSize(100,100);
         //mainCamera.orthographicSize = fixedOrthographicSize/(599/100);
         
