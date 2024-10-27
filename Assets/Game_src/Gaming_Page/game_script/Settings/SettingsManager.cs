@@ -19,6 +19,7 @@ public class SettingsMenu : MonoBehaviour
         environmentSlider.onValueChanged.AddListener(SetEnvironmentVolume);
     }
 
+
     public void SetMusicVolume(float volume)
     {
         AudioManager.instance.SetMusicVolume(volume);
@@ -31,7 +32,6 @@ public class SettingsMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        // prevent memory leaks
         musicSlider.onValueChanged.RemoveListener(SetMusicVolume);
         environmentSlider.onValueChanged.RemoveListener(SetEnvironmentVolume);
     }

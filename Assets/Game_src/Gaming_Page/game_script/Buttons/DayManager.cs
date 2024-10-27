@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DayManager : MonoBehaviour
@@ -5,10 +6,16 @@ public class DayManager : MonoBehaviour
     int day;
     int money;
     public EnergyManager energyManager;
+
+    public DayTransitionUI dayTransitionUI;
+
+    public bool isTransitioning = false;
+
     void Start()
     {
         day = 1;
         money = 0;
+        StartCoroutine(HandleDayChange());
     }
 
     void Update()
@@ -16,19 +23,32 @@ public class DayManager : MonoBehaviour
         
     }
 
-    public void DayChange() // we need to call it when the day changes (for example, after 6 characters where checked)
+    public void DayChange()
     {
+        if (!isTransitioning) // change the day if no transition is in progress
+        {
+            StartCoroutine(HandleDayChange());
+        }
+    }
+
+    private IEnumerator HandleDayChange()
+    {
+        isTransitioning = true; // flag to block interactions
+
+        // day transition UI (!!!! BEFORE THIS, DON'T FORGET TO CLOSE ALL THE CAMERA WINDOWS (ONLY THE MAIN ONE SHOULD BE KEPT !!!!)
+        yield return dayTransitionUI.DayTransition(day);
+
         if (day < 6)
         {
             day++;
-            //day change mechanic (probably just fade in and fadeout screen, maybe also stop playing music)
-            money += energyManager.currentEnergy * 1; // instead of 1, energy to money multiplier
-            energyManager.AddEnergy(100); // I already made sure that energy won't go over 100
+            // day change logic from here
+            money += energyManager.currentEnergy * 1; // replace 1 with an energy-to-money multiplier
+            energyManager.AddEnergy(100); // energy won't exceed 100
         }
         else
         {
-            // logic of ending the game
-            if (money > 0) // change 0 to what we want
+            // end game logic
+            if (money > 0) // change 0 to what we need (calculate it later during testing)
             {
                 // ending 1
             }
@@ -37,5 +57,7 @@ public class DayManager : MonoBehaviour
                 // ending 2
             }
         }
+
+        isTransitioning = false; // allow interactions
     }
 }

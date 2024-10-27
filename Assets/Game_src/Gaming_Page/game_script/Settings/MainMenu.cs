@@ -1,12 +1,40 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject settingsPanel, mainButtons;
-    public void PlayGame()
+    public Image fadePanel;
+
+
+    private void Start()
     {
-        SceneManager.LoadScene("game");
+        fadePanel.gameObject.SetActive(false);
+    }
+
+    public void StartGame() // otherwise won't work
+    {
+        StartCoroutine(PlayGame());
+    }
+
+    private IEnumerator PlayGame()
+    {
+        fadePanel.gameObject.SetActive(true);
+        float elapsed = 0f;
+        Color panelColor = fadePanel.color;
+
+        while (elapsed < 1.5f)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(0, 1, elapsed / 1.5f);
+            fadePanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, alpha);
+            yield return null;
+        }
+        fadePanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, 1);
+        
+        SceneManager.LoadScene("Buttons_prefab_scene"); // replace with the game scene later
     }
 
     public void OpenSettings()
