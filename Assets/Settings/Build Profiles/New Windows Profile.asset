@@ -19,13 +19,13 @@ MonoBehaviour:
     rid: 3864236350976294913
   m_Scenes:
   - m_enabled: 1
+    m_path: Assets/Game_src/Gaming_Page/game_scene/Buttons_prefab_scene.unity
+  - m_enabled: 1
     m_path: Assets/Game_src/Gaming_Page/game_scene/Main Menu.unity
   - m_enabled: 1
     m_path: Assets/Game_src/Gaming_Page/game_scene/game.unity
   - m_enabled: 1
     m_path: Assets/Scenes/SampleScene.unity
-  - m_enabled: 1
-    m_path: Assets/Game_src/Gaming_Page/game_scene/Buttons_prefab_scene.unity
   - m_enabled: 1
     m_path: Assets/Game_src/Gaming_Page/game_scene/Ending1.unity
   - m_enabled: 1
