@@ -6,6 +6,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class NetworkConnection : NetworkBehaviour
 {
     private float nowTime = 10f;
@@ -16,7 +17,16 @@ public class NetworkConnection : NetworkBehaviour
     public bool isClient_Connect = false;
     public Character_apperance character_apperance;
     public float fixedOrthographicSize = 5.0f; // 固定的相机正交大小
-    [SerializeField] GameObject Front_wall;
+
+    // list of GameObject
+    [SerializeField] GameObject[] GameObject_hide_list;
+
+    //list of processor
+    private List<System.Diagnostics.Process> processor_list = new List<System.Diagnostics.Process>();
+    [SerializeField] Processor_manager processor_manager;
+    private string camera_type_cache="0";
+    
+    
     
     //[SceneName] public string firstScene;
     private async void Start()
@@ -124,7 +134,11 @@ public class NetworkConnection : NetworkBehaviour
     private void start_become_client()
     {
         isClient_Connect = true;
-        Front_wall.SetActive(false);
+        
+        foreach (var item in GameObject_hide_list)
+        {
+            item.SetActive(false);
+        }
         positionGetter.SetWindowSize(100,100);
         //mainCamera.orthographicSize = fixedOrthographicSize/(599/100);
         
@@ -136,7 +150,7 @@ public class NetworkConnection : NetworkBehaviour
         Debug.Log($"Client connected with ClientId: {clientId}");
         // 可以在这里调用发送消息的方法
         
-        SendMessageTypeToClient(clientId, "1");
+        SendMessageTypeToClient(clientId, camera_type_cache);
         SendMessageApparenceToClient(character_apperance.GetAppearance());
         
         
@@ -145,6 +159,7 @@ public class NetworkConnection : NetworkBehaviour
     [ClientRpc]
     private void ReceiveMessageTypeClientRpc(string message, ClientRpcParams rpcParams = default)
     {
+        
         character_apperance.CheckCameraType(message);
         Debug.Log("Received message: " + message);
     }
@@ -185,6 +200,21 @@ public class NetworkConnection : NetworkBehaviour
             }
         };
         ReceiveMessageApparenceClientRpc(message);
+    }
+
+    public void start_camera(string type)
+    {
+        Debug.Log("start_camera: " + type);
+        camera_type_cache = type;
+        processor_list.Add(processor_manager.OpenExe());
+    }
+    public void close_all_camera()
+    {
+        foreach (var process in processor_list)
+        {
+            processor_manager.CloseExe(process);
+        }
+        processor_list.Clear();
     }
     
 

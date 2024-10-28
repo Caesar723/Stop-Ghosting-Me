@@ -22,13 +22,13 @@ public class Processor_manager : NetworkBehaviour
         #endif
         
     }
-    public void OpenExe()
+    public Process OpenExe()
     {
-        if (!IsHost)
-        {
+        // if (!IsHost)
+        // {
             
-            return;
-        }
+        //     return;
+        // }
 
         string exePath = GetExePath();
 
@@ -42,7 +42,7 @@ public class Processor_manager : NetworkBehaviour
                 RedirectStandardError = true,
                 CreateNoWindow = true,
             };
-            Process.Start(psi);
+            exeProcess = Process.Start(psi);
         #endif  
 
         #if UNITY_STANDALONE_WIN
@@ -52,23 +52,24 @@ public class Processor_manager : NetworkBehaviour
                 UseShellExecute = true,
                 CreateNoWindow = true,
             };
-            Process.Start(psi);
+            exeProcess = Process.Start(psi);
         #endif
         
+        return exeProcess;
     }
 
     // 关闭 exe 进程
-    public void CloseExe()
+    public void CloseExe(Process process)
     {
         if (!IsHost)
         {
             return;
         }
 
-        if (exeProcess != null && !exeProcess.HasExited)
+        if (process != null && !process.HasExited)
         {
             // 尝试优雅地关闭进程
-            exeProcess.CloseMainWindow();
+            process.CloseMainWindow();
 
             // 如果需要强制关闭，使用 Kill()
             // exeProcess.Kill();

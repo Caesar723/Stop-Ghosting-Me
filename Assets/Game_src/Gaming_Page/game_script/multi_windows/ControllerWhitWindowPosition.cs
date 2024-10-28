@@ -60,10 +60,10 @@ public class ControllerWhitWindowPosition : MonoBehaviour
     {
         positionGetter.SetWindowSize(1960/2,1080/2);
         mainCamera.orthographicSize =5;
-        EnvironmentRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame + new Vector2(-1.5f,1.5f);
+        EnvironmentRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame + new Vector2(1.7f,-2.5f);
         CameraRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame ;
 
-        Debug.Log(positionGetter.GetWindowBarHeightPublic());
+        //Debug.Log(positionGetter.GetWindowBarHeightPublic());
     }
 
     private void ClientUpdate()

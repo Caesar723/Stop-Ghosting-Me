@@ -19,6 +19,8 @@ MonoBehaviour:
     rid: 3864236350976294912
   m_Scenes:
   - m_enabled: 1
+    m_path: Assets/Game_src/Gaming_Page/game_scene/game_finally.unity
+  - m_enabled: 1
     m_path: Assets/Game_src/Gaming_Page/game_scene/game.unity
   - m_enabled: 1
     m_path: Assets/Scenes/SampleScene.unity
@@ -922,8 +924,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 3864236350976294912
       type: {class: OSXStandaloneBuildProfile, ns: UnityEditor.OSXStandalone, asm: UnityEditor.OSXStandalone.Extensions}
       data:

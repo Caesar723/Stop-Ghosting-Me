@@ -76,9 +76,6 @@ public class WindowPositionGetter : MonoBehaviour
     [DllImport("MacWindowPlugin")]
     private static extern float GetWindowBarHeight();
 
-    [DllImport("__Internal")]
-    private static extern void OpenSelfApp(string appPath);
-    
 
     [DllImport("MacWindowPlugin")]
     private static extern void SetWindowSize(float width, float height);
@@ -104,11 +101,11 @@ public class WindowPositionGetter : MonoBehaviour
             SetWindowsPositionToCenter();
         }
     }
-    void Awake()
-    {
-        SetWindowsPositionToCenter();
-        SetWindowSize(1920/2,1080/2);
-    }
+    // void Awake()
+    // {
+    //     SetWindowsPositionToCenter();
+    //     SetWindowSize(1920/2,1080/2);
+    // }
 
     public Vector2 GetWindowPosition()
     {
