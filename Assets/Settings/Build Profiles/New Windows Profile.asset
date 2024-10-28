@@ -26,6 +26,14 @@ MonoBehaviour:
     m_path: Assets/Scenes/SampleScene.unity
   - m_enabled: 1
     m_path: Assets/Game_src/Gaming_Page/game_scene/Buttons_prefab_scene.unity
+  - m_enabled: 1
+    m_path: Assets/Game_src/Gaming_Page/game_scene/Ending1.unity
+  - m_enabled: 1
+    m_path: Assets/Game_src/Gaming_Page/game_scene/Ending2.unity
+  - m_enabled: 1
+    m_path: Assets/Game_src/Gaming_Page/game_scene/Ending3.unity
+  - m_enabled: 1
+    m_path: Assets/Game_src/Gaming_Page/game_scene/Ending4.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
