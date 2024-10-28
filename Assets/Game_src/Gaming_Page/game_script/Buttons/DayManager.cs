@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    int day;
-    int money;
+    public int day;
+    public int money;
     public EnergyManager energyManager;
 
     public DayTransitionUI dayTransitionUI;
