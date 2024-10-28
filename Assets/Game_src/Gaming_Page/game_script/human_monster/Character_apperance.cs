@@ -25,7 +25,6 @@ public class Character_apperance:MonoBehaviour
     [SerializeField] SpriteRenderer X_ray_part;
     [SerializeField] SpriteRenderer High_pitch_part;
     // [SerializeField] GameObject Dark_part;
-    // [SerializeField] GameObject Gailic_smile_part;
 
 
     private bool Is_Monster = false;
@@ -96,11 +95,6 @@ public class Character_apperance:MonoBehaviour
     {
         new List<string>() {},
         new List<string>() {}
-    };
-    private List<List<string>> Gailic_smile_path = new List<List<string>>()
-    {
-        new List<string>() { },
-        new List<string>() { }
     };
 
     private Dictionary<string, Vector2> partPositions = new Dictionary<string, Vector2>()
@@ -181,7 +175,6 @@ public class Character_apperance:MonoBehaviour
             temperature_path = type == "temperature" ? path : GetRandomPath(Temperature_path, 0).path;
             high_pitch_path = type == "high_pitch" ? path : GetRandomPath(High_pitch_path, 0).path;
             dark_path = type == "dark" ? path : GetRandomPath(Dark_path, 0).path;
-            gailic_smile_path = type == "gailic_smile" ? path : GetRandomPath(Gailic_smile_path, 0).path;
         }
         else
         {
@@ -192,7 +185,7 @@ public class Character_apperance:MonoBehaviour
             
             mouth_path = GetRandomPath(Mouth_path, 0).path;
 
-            // hair rando (including bald)
+            // hair rando (including bald) !!! DOESN'T WORK, PLEASE FIX, I'M NOT SURE HOW
             int hair_number = Random.Range(1, 6);
             Debug.Log(hair_number);
             if (hair_number != 5) hair_path = GetRandomPath(Hair_path, 0).path;
@@ -203,14 +196,13 @@ public class Character_apperance:MonoBehaviour
             temperature_path = GetRandomPath(Temperature_path, 0).path;
             high_pitch_path = GetRandomPath(High_pitch_path, 0).path;
             dark_path = GetRandomPath(Dark_path, 0).path;
-            gailic_smile_path = GetRandomPath(Gailic_smile_path, 0).path;
         }
 
         var (eyes_path_get, eyes_index) = GetRandomPath(Eyes_path, 0);
         eyes_path = eyes_path_get;
         eyes_blink_path =Eyes_blink_path[0][eyes_index];
        
-        ChangeImage(body_path, face_path, eyes_path, eyes_blink_path, mouth_path, hair_path, nose_path, x_ray_path, temperature_path, high_pitch_path);//, dark_path, gailic_smile_path);
+        ChangeImage(body_path, face_path, eyes_path, eyes_blink_path, mouth_path, hair_path, nose_path, x_ray_path, temperature_path, high_pitch_path);//, dark_path);
 
     }
 
@@ -227,7 +219,6 @@ public class Character_apperance:MonoBehaviour
         LoadSpriteFromPath(temperature_path, Temperature_part);
         LoadSpriteFromPath(high_pitch_path, High_pitch_part);
         //Dark.GetComponent<Image>().sprite = Resources.Load<Sprite>(dark_path);
-        //Gailic_smile.GetComponent<Image>().sprite = Resources.Load<Sprite>(gailic_smile_path);
 
         // positions
         SetPartPosition(body_path, Body_part);
@@ -270,7 +261,6 @@ public class Character_apperance:MonoBehaviour
         var (temperature_path, temperature_index) = GetRandomPath(Temperature_path, 1);
         var (high_pitch_path, high_pitch_index) = GetRandomPath(High_pitch_path, 1);
         var (dark_path, dark_index) = GetRandomPath(Dark_path, 1);
-        var (gailic_smile_path, gailic_smile_index) = GetRandomPath(Gailic_smile_path, 1);
 
         List<(string path, string type)> paths = new List<(string path, string type)>
         {
@@ -284,7 +274,6 @@ public class Character_apperance:MonoBehaviour
             (temperature_path, "temperature"),
             (high_pitch_path, "high_pitch"),
             (dark_path, "dark"),
-            (gailic_smile_path, "gailic_smile")
         };
 
         paths.RemoveAll(path => string.IsNullOrEmpty(path.path));
@@ -389,7 +378,6 @@ public class Character_apperance:MonoBehaviour
         temperature_path = parts[8];
         high_pitch_path = parts[9];
         //dark_path = parts[10];
-        //gailic_smile_path = parts[11];
         ChangeImage(body_path, face_path, eyes_path, eyes_blink_path, mouth_path, hair_path, nose_path, x_ray_path, temperature_path, high_pitch_path);
     }
 

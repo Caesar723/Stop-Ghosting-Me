@@ -19,6 +19,11 @@ public class General_Button : MonoBehaviour
     public AudioClip errorSound;
 
     private SpriteRenderer spriteRenderer;
+
+    [TextArea]
+    public string hoverText; // instructions when hovering
+    public InstructionDisplay hoverTextDisplay; 
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,6 +37,7 @@ public class General_Button : MonoBehaviour
         if (!gameManager.isTransitioning)
         {
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(207, 207, 207, 255);
+            hoverTextDisplay.ShowHoverText(hoverText);
         }
     }
 
@@ -42,6 +48,7 @@ public class General_Button : MonoBehaviour
         if (!gameManager.isTransitioning)
         {
             this.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+            hoverTextDisplay.ClearHoverText();
         }
     }
 
