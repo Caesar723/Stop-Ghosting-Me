@@ -192,6 +192,7 @@ public class NetworkConnection : NetworkBehaviour
     }
     public void SendMessageApparenceToClient(string message){
         // 向所有客户端发送消息
+        Debug.Log("SendMessageApparenceToClient: " + message);
         var rpcParams = new ClientRpcParams
         {
             Send = new ClientRpcSendParams

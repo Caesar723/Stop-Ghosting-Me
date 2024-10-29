@@ -3448,6 +3448,18 @@ MonoBehaviour:
           m_StringArgument: sound
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 255553141}
+        m_TargetAssemblyTypeName: Character_manager, Assembly-CSharp
+        m_MethodName: Set_Sound_Flag
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: sound
+          m_BoolArgument: 0
+        m_CallState: 2
   energyCost: 0
   yChange: 0.01
   clickSound: {fileID: 8300000, guid: 4e960e6e8582ca14ba727f2c2d9f2156, type: 3}
@@ -4653,6 +4665,10 @@ PrefabInstance:
       propertyPath: Monster_part2
       value: 
       objectReference: {fileID: 366150160}
+    - target: {fileID: 3756120276981014463, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
+      propertyPath: network_connection
+      value: 
+      objectReference: {fileID: 1778064689}
     - target: {fileID: 5386221616841163009, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
       propertyPath: m_Name
       value: People
@@ -4757,6 +4773,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   camera: {fileID: 1279634083}
+  move_to_center: 0
+  move_to_left: 0
+  move_to_right: 0
   character_manager: {fileID: 255553141}
 --- !u!1 &1426781433
 GameObject:
@@ -5189,6 +5208,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PhrasePicker, Assembly-CSharp
         m_MethodName: DisplayRandomPhraseFromFile
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: light
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 255553141}
+        m_TargetAssemblyTypeName: Character_manager, Assembly-CSharp
+        m_MethodName: Set_Light_Flag
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

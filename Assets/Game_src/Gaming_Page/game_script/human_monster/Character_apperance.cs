@@ -7,6 +7,7 @@ using System.Collections;
 public class Character_apperance:MonoBehaviour
 {
     [SerializeField] private Camera camera;
+    [SerializeField] NetworkConnection network_connection;
     //this is for the character appearance
     [SerializeField] GameObject General;
     [SerializeField] GameObject X_ray;
@@ -38,7 +39,7 @@ public class Character_apperance:MonoBehaviour
     public bool Sound_Flag = false;
     public bool Light_Flag = false;
 
-    private string camera_type="0";//0:General, 1:X_ray, 2:Temperature, 3:High_pitch, 4:Dark, 5:Gailic_smile
+    private string camera_type="-1";//0:General, 1:X_ray, 2:Temperature, 3:High_pitch, 4:Dark, 5:Gailic_smile
 
     //image path of each part
     //is 2d array first is for human second is for monster
@@ -96,6 +97,8 @@ public class Character_apperance:MonoBehaviour
         new List<string>() { "Image_human/High-pitch/Human_skeleton_sound" },
         new List<string>() { "Image_monster/High-pitch/Monster_skeleton_sound1", "Image_monster/High-pitch/Monster_skeleton_sound2","Image_monster/High-pitch/Monster_skeleton_sound3" }
     };
+    private string High_pitch_path_normal = "Image_human/High-pitch/Human_skeleton_sound";
+
     private List<List<string>> Monster_part1_path = new List<List<string>>()
     {
         new List<string>() {},
@@ -159,6 +162,8 @@ public class Character_apperance:MonoBehaviour
 
     
     public string textType_temperature, textType_sound, textType_light;
+
+
 
     public void Start()
     {
@@ -228,7 +233,7 @@ public class Character_apperance:MonoBehaviour
 
     public void ChangeAppearance(bool is_monster, int day)
     {
-        
+        ResetFlag();
         Is_Monster = is_monster;
         if(is_monster)
         {
@@ -300,7 +305,7 @@ public class Character_apperance:MonoBehaviour
             Hair_part.enabled = false;
         }
 
-        if (monster_part1_path != "")
+        if (monster_part1_path != "" && camera_type != "-1")
         {
             Monster_part1.enabled = true;
             LoadSpriteFromPath(monster_part1_path, Monster_part1);
@@ -310,7 +315,7 @@ public class Character_apperance:MonoBehaviour
             Monster_part1.enabled = false;
         }
 
-        if (monster_part2_path != "")
+        if (monster_part2_path != "" && camera_type != "-1")
         {
             Monster_part2.enabled = true;
             LoadSpriteFromPath(monster_part2_path, Monster_part2);
@@ -438,6 +443,7 @@ public class Character_apperance:MonoBehaviour
 
     public void CheckCameraType(string type)
     {
+        camera_type=type;
         switch(type)
         {
             case "0":
@@ -447,6 +453,16 @@ public class Character_apperance:MonoBehaviour
                 High_pitch.SetActive(false);
                 Dark.SetActive(false);
                 Gailic_smile.SetActive(false);
+
+                Body_part.color = Color.white;
+                Face_part.color = Color.white;
+                Eyes_part.color = Color.white;
+                Mouth_part.color = Color.white;
+                Hair_part.color = Color.white;
+                Nose_part.color = Color.white;
+
+                // Monster_part1.enabled = false;
+                // Monster_part2.enabled = false;
                 break;
             case "1":
                 //Debug.Log("1");
@@ -489,6 +505,24 @@ public class Character_apperance:MonoBehaviour
                 High_pitch.SetActive(false);
                 Dark.SetActive(false);
                 break;
+             case "-1"://color change to black
+                General.SetActive(true);
+                X_ray.SetActive(false);
+                Temperature.SetActive(false);
+                High_pitch.SetActive(false);
+                Dark.SetActive(false);
+                Gailic_smile.SetActive(false);
+
+                Body_part.color = new Color(0, 0, 0, 1);
+                Face_part.color = new Color(0, 0, 0, 1);
+                Eyes_part.color = new Color(0, 0, 0, 1);
+                Mouth_part.color = new Color(0, 0, 0, 1);
+                Hair_part.color = new Color(0, 0, 0, 1);
+                Nose_part.color = new Color(0, 0, 0, 1);
+
+                
+                
+                break;
             default:
                 break;
         }
@@ -515,10 +549,45 @@ public class Character_apperance:MonoBehaviour
         ChangeImage(body_path, face_path, eyes_path, eyes_blink_path, mouth_path, hair_path, nose_path, x_ray_path, temperature_path, high_pitch_path, monster_part1_path, monster_part2_path);
     }
 
+
+    public void SetSoundFlag(){
+        Sound_Flag=true;
+        Boardcast_Appearance();
+    }
+
+    public void SetLightFlag(){
+        Light_Flag=true;
+        Boardcast_Appearance();
+    }
+    private void ResetFlag(){
+        Sound_Flag=false;
+        Light_Flag=false;
+    }
+
     public string GetAppearance()
     {
         Debug.Log("GetAppearance: " + body_path + "," + face_path + "," + eyes_path + "," + eyes_blink_path + "," + mouth_path + "," + hair_path + "," + nose_path + "," + x_ray_path + "," + temperature_path + "," + high_pitch_path + "," + monster_part1_path + "," + monster_part2_path);
-        return body_path + "," + face_path + "," + eyes_path + "," + eyes_blink_path + "," + mouth_path + "," + hair_path + "," + nose_path + "," + x_ray_path + "," + temperature_path + "," + high_pitch_path + "," + monster_part1_path + "," + monster_part2_path;
+        string high_pitch= high_pitch_path;
+        string monster1= monster_part1_path;
+        string monster2= monster_part2_path;
+        if (!Sound_Flag){
+            high_pitch= High_pitch_path_normal;
+        }
+
+        if (!Light_Flag){
+            monster1= "";
+            monster2= "";
+        }
+
+        
+        return body_path + "," + face_path + "," + eyes_path + "," + eyes_blink_path + "," + mouth_path + "," + hair_path + "," + nose_path + "," + x_ray_path + "," + temperature_path + "," + high_pitch + "," + monster1 + "," + monster2;
+    }
+
+
+    public void Boardcast_Appearance()
+    {
+        network_connection.SendMessageApparenceToClient(GetAppearance());
+        //character_manager.Send_signal_to_character(GetAppearance());
     }
 
 

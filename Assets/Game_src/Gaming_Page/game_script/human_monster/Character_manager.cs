@@ -14,7 +14,7 @@ public class Character_manager:MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("day_manager.day:"+day_manager.day);
+        //Debug.Log("day_manager.day:"+day_manager.day);
         Generate_Character(day_manager.day);
         Enter_Scene();
     }
@@ -79,4 +79,15 @@ public class Character_manager:MonoBehaviour
             Enter_Scene();
         }
     }
+
+    public void Set_Sound_Flag()
+    {
+        character_apperance.SetSoundFlag();
+    }
+    public void Set_Light_Flag()
+    {
+        character_apperance.SetLightFlag();
+    }
+
+
 }
