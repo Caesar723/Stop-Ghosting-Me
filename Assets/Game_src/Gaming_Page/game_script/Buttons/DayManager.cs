@@ -5,6 +5,8 @@ public class DayManager : MonoBehaviour
 {
     public int day=1;
     public int money;
+    public int timer=0;
+    public int ghosting=0;
     public EnergyManager energyManager;
 
     public DayTransitionUI dayTransitionUI;

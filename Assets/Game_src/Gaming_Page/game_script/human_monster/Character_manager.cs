@@ -7,6 +7,8 @@ public class Character_manager:MonoBehaviour
     public Character_movement character_movement;
     public Character_apperance character_apperance;
     [SerializeField] private DayManager day_manager;
+    [SerializeField] private GameObject light_object;
+    [SerializeField] private NetworkConnection networkConnection;
 
 
     private int max_people = 7;
@@ -51,12 +53,16 @@ public class Character_manager:MonoBehaviour
         {
             return;
         }
+        day_manager.timer=0;
+        if (is_monster){
+          day_manager.ghosting+=1;
+        }
         if (character_apperance.Is_Monster != is_monster)
         {
-            
+            day_manager.money-=20;
         }
         else{
-            
+            day_manager.money+=20;
         }
 
         if (is_monster){
@@ -65,6 +71,7 @@ public class Character_manager:MonoBehaviour
         else{
           Exit_Scene_Pass();
         }
+        Reset();
 
         current_people++;
         Check_people();
@@ -82,11 +89,19 @@ public class Character_manager:MonoBehaviour
 
     public void Set_Sound_Flag()
     {
+        light_object.SetActive(false);
         character_apperance.SetSoundFlag();
     }
     public void Set_Light_Flag()
     {
         character_apperance.SetLightFlag();
+    }
+    public void Reset()
+    {
+        character_apperance.Sound_Flag=false;
+        character_apperance.Light_Flag=false;
+        networkConnection.close_all_camera();
+        light_object.SetActive(true);
     }
 
 

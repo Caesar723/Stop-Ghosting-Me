@@ -169,6 +169,7 @@ public class Character_apperance:MonoBehaviour
     {
         CheckCameraType(camera_type);
         ChangeAppearance(true,1);
+        Blink();
         
     }
     void AssignTextTypes(int day)
@@ -505,6 +506,21 @@ public class Character_apperance:MonoBehaviour
                 High_pitch.SetActive(false);
                 Dark.SetActive(false);
                 break;
+            case "6":
+                General.SetActive(true);
+                X_ray.SetActive(false);
+                Temperature.SetActive(false);
+                High_pitch.SetActive(false);
+                Dark.SetActive(false);
+                Gailic_smile.SetActive(false);
+                // change to night mode
+                Body_part.color = new Color(0.1f, 0.3f, 0.1f, 1);
+                Face_part.color = new Color(0.1f, 0.3f, 0.1f, 1);
+                Eyes_part.color = new Color(0.1f, 0.3f, 0.1f, 1);
+                Mouth_part.color = new Color(0.1f, 0.3f, 0.1f, 1);
+                Hair_part.color = new Color(0.1f, 0.3f, 0.1f, 1);
+                Nose_part.color = new Color(0.1f, 0.3f, 0.1f, 1);
+                break;
              case "-1"://color change to black
                 General.SetActive(true);
                 X_ray.SetActive(false);
@@ -591,18 +607,34 @@ public class Character_apperance:MonoBehaviour
     }
 
 
+    // public void Blink()
+    // {
+    //     Transform eyesTransform = this.gameObject.transform.Find("Eyes");
+    //     Debug.LogWarning("Blinking");
+
+    //     StartCoroutine(BlinkCoroutine()); 
+    // }
+
+    // private IEnumerator BlinkCoroutine()
+    // {
+    //     LoadSpriteFromPath(eyes_blink_path, Eyes_part);
+    //     yield return new WaitForSeconds(0.3f);
+    //     LoadSpriteFromPath(eyes_path, Eyes_part);
+    // }
+
     public void Blink()
     {
-        Transform eyesTransform = this.gameObject.transform.Find("Eyes");
-        Debug.LogWarning("Blinking");
-
-        StartCoroutine(BlinkCoroutine()); 
+        StartCoroutine(BlinkCoroutine());
     }
 
     private IEnumerator BlinkCoroutine()
     {
-        LoadSpriteFromPath(eyes_blink_path, Eyes_part);
-        yield return new WaitForSeconds(0.3f);
-        LoadSpriteFromPath(eyes_path, Eyes_part);
+        while (true)
+        {
+            LoadSpriteFromPath(eyes_blink_path, Eyes_part);
+            yield return new WaitForSeconds(0.3f);
+            LoadSpriteFromPath(eyes_path, Eyes_part);
+            yield return new WaitForSeconds(Random.Range(4f, 8f));
+        }
     }
 }
