@@ -42,7 +42,7 @@ public class Character_manager:MonoBehaviour
     private void Generate_Character(int day)
     {
         character_movement.ReturnToRight();
-        float percentage_monster = 0.5f;
+        float percentage_monster = 0.7f;
         bool is_monster = Random.Range(0, 100) < percentage_monster * 100;
         character_apperance.ChangeAppearance(is_monster,day);
     }
