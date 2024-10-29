@@ -17,7 +17,7 @@ public class Character_movement : NetworkBehaviour
 
     private void Update()
     {
-        if(move_to_center || move_to_left)
+        if(move_to_center || move_to_left || move_to_right)
         {
             MoveBasedOnCamera();
             CheckToDestination();

@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DayManager : MonoBehaviour
 {
     public int day=1;
     public int money;
-    public int timer=0;
+    public float timer=0;
     public int ghosting=0;
     public EnergyManager energyManager;
 
@@ -22,7 +23,15 @@ public class DayManager : MonoBehaviour
 
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if (timer >= 150 && day == 1)
+        {
+            SceneManager.LoadScene("Ending3");
+        }
+        if (ghosting == 6)
+        {
+            SceneManager.LoadScene("Ending4");
+        }
     }
 
     public void DayChange()
@@ -35,9 +44,10 @@ public class DayManager : MonoBehaviour
 
     private IEnumerator HandleDayChange()
     {
+        timer = 0;
         isTransitioning = true; // flag to block interactions
 
-        // day transition UI (!!!! BEFORE THIS, DON'T FORGET TO CLOSE ALL THE CAMERA WINDOWS (ONLY THE MAIN ONE SHOULD BE KEPT !!!!)
+        // day transition UI
         yield return dayTransitionUI.DayTransition(day);
 
         if (day < 6)
@@ -50,16 +60,17 @@ public class DayManager : MonoBehaviour
         else
         {
             // end game logic
-            if (money > 0) // change 0 to what we need (calculate it later during testing)
+            if (money > 250) // change 0 to what we need (calculate it later during testing)
             {
-                // ending 1
+                SceneManager.LoadScene("Ending1");
             }
             else
             {
-                // ending 2
+                SceneManager.LoadScene("Ending2");
             }
         }
-
+        timer = 0;
+        ghosting = 0;
         isTransitioning = false; // allow interactions
     }
 }

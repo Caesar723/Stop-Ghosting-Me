@@ -808,6 +808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   day: 0
   money: 0
+  timer: 0
+  ghosting: 0
   energyManager: {fileID: 255553134}
   dayTransitionUI: {fileID: 255553137}
   isTransitioning: 0
