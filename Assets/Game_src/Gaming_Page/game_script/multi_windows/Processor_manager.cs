@@ -12,7 +12,7 @@ public class Processor_manager : NetworkBehaviour
 
     public string GetExePath(){
         #if UNITY_STANDALONE_WIN
-            string exePath = Application.dataPath.Replace("_Data", ".exe");
+            string exePath = Path.Combine(Path.GetDirectoryName(Application.dataPath.Replace("_Data", "")), "camera", Path.GetFileName(Application.dataPath.Replace("_Data", ".exe")));
             return exePath;
         #endif
         #if UNITY_STANDALONE_OSX
