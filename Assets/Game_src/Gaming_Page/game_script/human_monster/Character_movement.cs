@@ -32,7 +32,7 @@ public class Character_movement : NetworkBehaviour
         //float cameraX = Camera.main.transform.position.x;
         float newY = Mathf.Sin(Time.time * 5f) * time_scale; // up and down
         //percentage_to_reach =percentage_to_reach + time_delay*speed;
-        if(move_to_right)
+        if(move_to_right && !move_to_center)
         {
             percentage_to_reach =percentage_to_reach - time_delay*speed;
         }
@@ -109,7 +109,7 @@ public class Character_movement : NetworkBehaviour
     }
     public void MoveToRight()
     {
-        
+        if(percentage_to_reach >= 0.25f)
         move_to_right = true;
     }
     public void ReturnToRight()

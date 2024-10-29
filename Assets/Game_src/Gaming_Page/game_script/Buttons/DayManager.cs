@@ -24,7 +24,7 @@ public class DayManager : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 150 && day == 1)
+        if (timer >= 90)
         {
             SceneManager.LoadScene("Ending3");
         }
