@@ -175,7 +175,7 @@ public class Character_apperance:MonoBehaviour
     void AssignTextTypes(int day)
     {
         
-        float humanProbability, neutralProbability;
+        float humanProbability;
         switch (day)    // probability of getting text prompt
         {
             case 1:

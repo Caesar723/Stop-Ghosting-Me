@@ -32,16 +32,16 @@ public class PhrasePicker : MonoBehaviour
                 switch (textType_temperature)
                 {
                     case "human":
-                        filePath = "Assets/Resources/human_temperature_phrases.txt";
+                        filePath = "human_temperature_phrases";
                         break;
                     case "monster":
-                        filePath = "Assets/Resources/monster_temperature_phrases.txt";
+                        filePath = "monster_temperature_phrases";
                         break;
                     case "neutral":
-                        filePath = "Assets/Resourcesneutral_temperature_phrases.txt";
+                        filePath = "neutral_temperature_phrases";
                         break;
                     default:
-                        filePath = "Assets/Resources/neutral_temperature_phrases.txt";
+                        filePath = "neutral_temperature_phrases";
                         break;
                 }
                 break;
@@ -49,16 +49,16 @@ public class PhrasePicker : MonoBehaviour
                 switch (textType_sound)
                 {
                     case "human":
-                        filePath = "Assets/Resources/human_sound_phrases.txt";
+                        filePath = "human_sound_phrases";
                         break;
                     case "monster":
-                        filePath = "Assets/Resources/monster_sound_phrases.txt";
+                        filePath = "monster_sound_phrases";
                         break;
                     case "neutral":
-                        filePath = "Assets/Resources/neutral_sound_phrases.txt";
+                        filePath = "neutral_sound_phrases";
                         break;
                     default:
-                        filePath = "Assets/Resources/neutral_sound_phrases.txt";
+                        filePath = "neutral_sound_phrases";
                         break;
                 }
                 break;
@@ -66,24 +66,24 @@ public class PhrasePicker : MonoBehaviour
                 switch (textType_light)
                 {
                     case "human":
-                        filePath = "Assets/Resources/human_light_phrases.txt";
+                        filePath = "human_light_phrases";
                         break;
                     case "monster":
-                        filePath = "Assets/Resources/monster_light_phrases.txt";
+                        filePath = "monster_light_phrases";
                         break;
                     case "neutral":
-                        filePath = "Assets/Resources/neutral_light_phrases.txt";
+                        filePath = "neutral_light_phrases";
                         break;
                     default:
-                        filePath = "Assets/Resources/neutral_light_phrases.txt";
+                        filePath = "neutral_light_phrases";
                         break;
                 }
                 break;
             default:
-                filePath = "Assets/Resources/neutral_sound_phrases.txt";
+                filePath = "neutral_sound_phrases";
                 break;
         }
-        LoadPhrasesFromFile(filePath);
+        LoadPhrasesFromResources(filePath);
         if (phrases.Count > 0)
         {
             string randomPhrase = phrases[Random.Range(0, phrases.Count)];
@@ -99,19 +99,22 @@ public class PhrasePicker : MonoBehaviour
         }
     }
 
-    private void LoadPhrasesFromFile(string filePath) // change filePath depending on what to load
+    private void LoadPhrasesFromResources(string fileName) // pass file name without path or extension
     {
-        phrases.Clear(); // clear phrases
-        if (File.Exists(filePath))
+        phrases.Clear(); // clear existing phrases
+
+        TextAsset textFile = Resources.Load<TextAsset>(fileName);
+        if (textFile != null)
         {
-            string[] lines = File.ReadAllLines(filePath);
+            string[] lines = textFile.text.Split(new[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
             phrases.AddRange(lines);
         }
         else
         {
-            Debug.LogError("Phrase file not found at " + filePath);
+            Debug.LogError("Phrase file not found in Resources: " + fileName);
         }
     }
+
 
     private IEnumerator TypeText(string phrase)
     {
