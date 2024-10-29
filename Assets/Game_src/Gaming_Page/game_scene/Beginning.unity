@@ -163,21 +163,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endingTexts:
-  - "To: Probationary Officer #6969\nSubject: Welcome to Your Probation Period\n\nCongratulations,
-    Officer,\n\nWe are pleased to inform you that you have been selected for the
+  - 'To: Probationary Officer #6969
+
+    Subject: Welcome to Your Probation Period
+
+
+    Congratulations,
+    Officer,
+
+
+    We are pleased to inform you that you have been selected for the
     probation period as our new Security Screening Officer. Your skills and discretion
     have brought you here, and we are confident that you will approach this assignment
-    with the utmost dedication.\n\nDuring your probation, your primary responsibility
+    with the utmost dedication.
+
+
+    During your probation, your primary responsibility
     will be to screen all visitors for clearance, ensuring that only humans are granted
     entry. Be vigilant and make no assumptions; threats can take many forms, and
     it is crucial that you remain both cautious and decisive in your evaluations.
     Each choice you make will contribute to your overall assessment, determining
-    whether you are suited for full-time placement.\n\nRemember: this is as much
-    an evaluation of your judgment as it is of the visitors\u2019. Misjudgment comes
-    with consequences. Should you prove diligent, your future here will be secure.
-    Should you falter\u2026 well, we trust you understand the stakes.\n\nReport to
-    your station promptly. Your shift begins upon arrival.\n\nWelcome to the team,\nManagement\n\n...PRESS
-    ENTER TO CONTINUE..."
+    whether you are suited for full-time placement.'
   - "Remember: this is as much an evaluation of your judgment as it is of the visitors\u2019.
     Misjudgment comes with consequences. Should you prove diligent, your future here
     will be secure. Should you falter\u2026 well, we trust you understand the stakes.\n\nReport

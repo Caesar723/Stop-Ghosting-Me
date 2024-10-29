@@ -685,7 +685,7 @@ MonoBehaviour:
           m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
-  energyCost: 10
+  energyCost: 5
   yChange: 0.03
   clickSound: {fileID: 8300000, guid: 4e960e6e8582ca14ba727f2c2d9f2156, type: 3}
   releaseSound: {fileID: 8300000, guid: c95eb471c1724e7458ff6f6e67192c1c, type: 3}
@@ -693,7 +693,7 @@ MonoBehaviour:
   hoverText: 'Used to check PERSON''S soul shape;
 
 
-    Energy cost: 10'
+    Energy cost: 5'
   hoverTextDisplay: {fileID: 255553140}
 --- !u!61 &255087393
 BoxCollider2D:
@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 39.57306, y: -94.36612, z: 41.60199, w: -93.858765}
+  m_margin: {x: 55.163513, y: -94.36612, z: 53.64923, w: -93.858765}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2305,11 +2305,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 419267922}
+  - {fileID: 928340374}
+  - {fileID: 787278593}
   - {fileID: 1515513909}
   - {fileID: 719375771}
   - {fileID: 1689748684}
-  - {fileID: 787278593}
-  - {fileID: 928340374}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2483,7 +2483,7 @@ MonoBehaviour:
           m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
-  energyCost: 20
+  energyCost: 5
   yChange: 0.03
   clickSound: {fileID: 8300000, guid: 4e960e6e8582ca14ba727f2c2d9f2156, type: 3}
   releaseSound: {fileID: 8300000, guid: c95eb471c1724e7458ff6f6e67192c1c, type: 3}
@@ -2491,7 +2491,7 @@ MonoBehaviour:
   hoverText: 'Used to start X-Ray;
 
 
-    Energy cost: 20'
+    Energy cost: 5'
   hoverTextDisplay: {fileID: 255553140}
 --- !u!61 &701956929
 BoxCollider2D:
@@ -2574,7 +2574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0046387, y: 0}
+  m_AnchoredPosition: {x: 0.004638672, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &719375772
@@ -2736,7 +2736,7 @@ MonoBehaviour:
           m_StringArgument: 6
           m_BoolArgument: 0
         m_CallState: 2
-  energyCost: 10
+  energyCost: 5
   yChange: 0.03
   clickSound: {fileID: 8300000, guid: 4e960e6e8582ca14ba727f2c2d9f2156, type: 3}
   releaseSound: {fileID: 8300000, guid: c95eb471c1724e7458ff6f6e67192c1c, type: 3}
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   hoverText: 'Used to start NIGHT VISION;
 
 
-    Energy cost: 10'
+    Energy cost: 5'
   hoverTextDisplay: {fileID: 255553140}
 --- !u!61 &719626942
 BoxCollider2D:
@@ -3170,8 +3170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 369.12817, y: 82.828735}
-  m_SizeDelta: {x: -821.0852, y: -288.1001}
+  m_AnchoredPosition: {x: 384.2928, y: 82.828735}
+  m_SizeDelta: {x: -851.4144, y: -288.1001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787278594
 MonoBehaviour:
@@ -3332,7 +3332,7 @@ MonoBehaviour:
           m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
-  energyCost: 10
+  energyCost: 5
   yChange: 0.03
   clickSound: {fileID: 8300000, guid: 4e960e6e8582ca14ba727f2c2d9f2156, type: 3}
   releaseSound: {fileID: 8300000, guid: c95eb471c1724e7458ff6f6e67192c1c, type: 3}
@@ -3340,7 +3340,7 @@ MonoBehaviour:
   hoverText: 'Used to start THERMAL VISION;
 
 
-    Energy cost: 10'
+    Energy cost: 5'
   hoverTextDisplay: {fileID: 255553140}
 --- !u!61 &823713553
 BoxCollider2D:
@@ -3428,8 +3428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.3499756, y: 13.449982}
-  m_SizeDelta: {x: -434.89996, y: -470.89996}
+  m_AnchoredPosition: {x: 12.049988, y: 13.449982}
+  m_SizeDelta: {x: -406.1, y: -470.89996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928340375
 MonoBehaviour:
