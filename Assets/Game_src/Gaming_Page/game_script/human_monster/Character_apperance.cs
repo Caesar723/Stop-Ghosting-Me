@@ -226,6 +226,10 @@ public class Character_apperance:MonoBehaviour
         {
             return AssignTextType(monsterProbability, monsterText, neutralText);
         }
+        else if ((Monster_type == "monster_part1") || (Monster_type == "monster_part2"))
+        {
+            return AssignTextType(monsterProbability, monsterText, neutralText);
+        }
         else
         {
             return AssignTextType(monsterProbability, "human", neutralText); // if not that type, works like human
