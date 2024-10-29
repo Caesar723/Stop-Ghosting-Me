@@ -118,7 +118,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &512735670
+--- !u!1 &418618649
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,8 +126,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 512735672}
-  - component: {fileID: 512735671}
+  - component: {fileID: 418618650}
+  - component: {fileID: 418618651}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -135,56 +135,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &512735671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512735670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb56408e97f80f458ff6069ff4c2688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endingTexts:
-  - "You sit frozen, unable to decide, as the figure on the monitor waits in silence.
-    The clock ticks, each second growing heavier, louder. But something feels wrong.
-    The screen flickers, static buzzing in waves, and the visitor\u2019s image distorts,
-    their face warping and blurring.\n\nThen, the screen goes black. A new image
-    fades in - it's you, staring back from the monitor, bewildered and confused.
-    You blink, but the reflection doesn\u2019t mimic you; instead, it tilts its head,
-    studying you, a cold intensity in its eyes. Your stomach tightens as you realize
-    this isn\u2019t just a reflection. You\u2019re being observed.\n\nA message begins
-    to type out beneath your own face: \u201CProbationary Officer #6969 - Final Evaluation:
-    Pending\u2026 Determining Subject Status: Human or Monster.\u201D\n\nYou watch
-    in horror as a second figure appears on the screen - a security officer, seated
-    at a console identical to yours, watching you. Their expression is unreadable
-    as they assess you, their finger hovering over a so familiar set of buttons,
-    the ones you used to determine the fate of others...\n\nIt dawns on you: you\u2019ve
-    been on trial from the start. Every decision you made, every hesitation, every
-    glimpse of doubt\u2014they were not just observations of others, but of yourself.
-    This entire assignment has been a test to see if you could discern between human
-    and monster, and your indecision has left your own nature in question. They\u2019ve
-    seen the cracks, the shadows in your own judgment, and now they wonder\u2026
-    are you the monster yourself?"
-  - "The screen flashes as a new message types itself slowly, each word a punch to
-    your gut: \u201CSubject shows traits of potential contamination\u2026 Identity:
-    Inconclusive.\u201D\n\nYou open your mouth to scream, to defend yourself, but
-    the screen goes black. The only sound left is the hum of the monitor as the final
-    judgment scrolls onto the screen: \u201CSubject Pending. Close observation required.\u201D\n\nAnd
-    as the lights dim, you realize with horror that, in their eyes, you are no longer
-    fully human.\n\n...PRESS ENTER TO RETURN TO THE MAIN MENU..."
-  typingSpeed: 0.05
-  uiTextMeshPro: {fileID: 1819841932}
-  typingSound: {fileID: 8300000, guid: 749b608f8985d72489975c2831d7efbd, type: 3}
---- !u!4 &512735672
+--- !u!4 &418618650
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512735670}
+  m_GameObject: {fileID: 418618649}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1037.1814, y: 466.8725, z: -6.437532}
@@ -193,6 +150,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &418618651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418618649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb56408e97f80f458ff6069ff4c2688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endingTexts:
+  - "To: Probationary Officer #6969\nSubject: Welcome to Your Probation Period\n\nCongratulations,
+    Officer,\n\nWe are pleased to inform you that you have been selected for the
+    probation period as our new Security Screening Officer. Your skills and discretion
+    have brought you here, and we are confident that you will approach this assignment
+    with the utmost dedication.\n\nDuring your probation, your primary responsibility
+    will be to screen all visitors for clearance, ensuring that only humans are granted
+    entry. Be vigilant and make no assumptions; threats can take many forms, and
+    it is crucial that you remain both cautious and decisive in your evaluations.
+    Each choice you make will contribute to your overall assessment, determining
+    whether you are suited for full-time placement.\n\nRemember: this is as much
+    an evaluation of your judgment as it is of the visitors\u2019. Misjudgment comes
+    with consequences. Should you prove diligent, your future here will be secure.
+    Should you falter\u2026 well, we trust you understand the stakes.\n\nReport to
+    your station promptly. Your shift begins upon arrival.\n\nWelcome to the team,\nManagement\n\n...PRESS
+    ENTER TO CONTINUE..."
+  typingSpeed: 0.05
+  uiTextMeshPro: {fileID: 1819841932}
+  typingSound: {fileID: 8300000, guid: 749b608f8985d72489975c2831d7efbd, type: 3}
 --- !u!1 &1253671276
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +192,7 @@ GameObject:
   - component: {fileID: 1253671279}
   - component: {fileID: 1253671278}
   - component: {fileID: 1253671277}
+  - component: {fileID: 1253671280}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -285,6 +274,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1253671280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253671276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1253890722
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000026464, y: 33.2}
+  m_AnchoredPosition: {x: -1.3829, y: 37.12}
   m_SizeDelta: {x: 1436.087, y: 822.5543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1819841932
@@ -599,26 +632,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You sit frozen, unable to decide, as the figure on the monitor waits in
-    silence. The clock ticks, each second growing heavier, louder. But something
-    feels wrong. The screen flickers, static buzzing in waves, and the visitor\u2019s
-    image distorts, their face warping and blurring.\n\nThen, the screen goes black.
-    A new image fades in - it's you, staring back from the monitor, bewildered and
-    confused. You blink, but the reflection doesn\u2019t mimic you; instead, it tilts
-    its head, studying you, a cold intensity in its eyes. Your stomach tightens as
-    you realize this isn\u2019t just a reflection. You\u2019re being observed.\n\nA
-    message begins to type out beneath your own face: \u201CProbationary Officer
-    #6969 - Final Evaluation: Pending\u2026 Determining Subject Status: Human or
-    Monster.\u201D\n\nYou watch in horror as a second figure appears on the screen
-    - a security officer, seated at a console identical to yours, watching you. Their
-    expression is unreadable as they assess you, their finger hovering over a so
-    familiar set of buttons, the ones you used to determine the fate of others...\n\nIt
-    dawns on you: you\u2019ve been on trial from the start. Every decision you made,
-    every hesitation, every glimpse of doubt\u2014they were not just observations
-    of others, but of yourself. This entire assignment has been a test to see if
-    you could discern between human and monster, and your indecision has left your
-    own nature in question. They\u2019ve seen the cracks, the shadows in your own
-    judgment, and now they wonder\u2026 are you the monster yourself?"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7644e129556142848aafb6a9191ef285, type: 2}
   m_sharedMaterial: {fileID: 1004517915762387641, guid: 7644e129556142848aafb6a9191ef285, type: 2}
@@ -704,4 +718,4 @@ SceneRoots:
   - {fileID: 1253671279}
   - {fileID: 1253890726}
   - {fileID: 1319119346}
-  - {fileID: 512735672}
+  - {fileID: 418618650}
