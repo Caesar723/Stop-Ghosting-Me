@@ -58,6 +58,9 @@ public class NetworkConnection : NetworkBehaviour
             Debug.Log("HasServer");
             start_become_client();
             OnNetDone?.Invoke();
+            //await Task.Delay(100);
+            
+
         }
         else
         {
@@ -128,6 +131,7 @@ public class NetworkConnection : NetworkBehaviour
     {
         isHost_Connect = true;
         positionGetter.SetWindowSize(1920/2,1080/2);
+        positionGetter.SetWindowsPosition(new Vector2(100,100));
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         //character_apperance.ChangeAppearance(true);
     }
@@ -140,6 +144,7 @@ public class NetworkConnection : NetworkBehaviour
             item.SetActive(false);
         }
         positionGetter.SetWindowSize(100,100);
+        positionGetter.SetWindowsPosition(new Vector2(100,100));
         //mainCamera.orthographicSize = fixedOrthographicSize/(599/100);
         
     }
