@@ -168,12 +168,18 @@ MonoBehaviour:
     and monster, and your indecision has left your own nature in question. They\u2019ve
     seen the cracks, the shadows in your own judgment, and now they wonder\u2026
     are you the monster yourself?"
-  - "The screen flashes as a new message types itself slowly, each word a punch to
-    your gut: \u201CSubject shows traits of potential contamination\u2026 Identity:
-    Inconclusive.\u201D\n\nYou open your mouth to scream, to defend yourself, but
-    the screen goes black. The only sound left is the hum of the monitor as the final
-    judgment scrolls onto the screen: \u201CSubject Pending. Close observation required.\u201D\n\nAnd
-    as the lights dim, you realize with horror that, in their eyes, you are no longer
+  - "It dawns on you: you\u2019ve been on trial from the start. Every decision you
+    made, every hesitation, every glimpse of doubt\u2014they were not just observations
+    of others, but of yourself. This entire assignment has been a test to see if
+    you could discern between human and monster, and your indecision has left your
+    own nature in question. They\u2019ve seen the cracks, the shadows in your own
+    judgment, and now they wonder\u2026 are you the monster yourself?\n\nThe screen
+    flashes as a new message types itself slowly, each word a punch to your gut:
+    \u201CSubject shows traits of potential contamination\u2026 Identity: Inconclusive.\u201D\n\nYou
+    open your mouth to scream, to defend yourself, but the screen goes black. The
+    only sound left is the hum of the monitor as the final judgment scrolls onto
+    the screen: \u201CSubject Pending. Close observation required.\u201D\n\nAnd as
+    the lights dim, you realize with horror that, in their eyes, you are no longer
     fully human.\n\n...PRESS ENTER TO RETURN TO THE MAIN MENU..."
   typingSpeed: 0.05
   uiTextMeshPro: {fileID: 1819841932}
@@ -599,26 +605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You sit frozen, unable to decide, as the figure on the monitor waits in
-    silence. The clock ticks, each second growing heavier, louder. But something
-    feels wrong. The screen flickers, static buzzing in waves, and the visitor\u2019s
-    image distorts, their face warping and blurring.\n\nThen, the screen goes black.
-    A new image fades in - it's you, staring back from the monitor, bewildered and
-    confused. You blink, but the reflection doesn\u2019t mimic you; instead, it tilts
-    its head, studying you, a cold intensity in its eyes. Your stomach tightens as
-    you realize this isn\u2019t just a reflection. You\u2019re being observed.\n\nA
-    message begins to type out beneath your own face: \u201CProbationary Officer
-    #6969 - Final Evaluation: Pending\u2026 Determining Subject Status: Human or
-    Monster.\u201D\n\nYou watch in horror as a second figure appears on the screen
-    - a security officer, seated at a console identical to yours, watching you. Their
-    expression is unreadable as they assess you, their finger hovering over a so
-    familiar set of buttons, the ones you used to determine the fate of others...\n\nIt
-    dawns on you: you\u2019ve been on trial from the start. Every decision you made,
-    every hesitation, every glimpse of doubt\u2014they were not just observations
-    of others, but of yourself. This entire assignment has been a test to see if
-    you could discern between human and monster, and your indecision has left your
-    own nature in question. They\u2019ve seen the cracks, the shadows in your own
-    judgment, and now they wonder\u2026 are you the monster yourself?"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7644e129556142848aafb6a9191ef285, type: 2}
   m_sharedMaterial: {fileID: 1004517915762387641, guid: 7644e129556142848aafb6a9191ef285, type: 2}
@@ -683,7 +670,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 55.276733, y: 77.38733, z: 55.27661, w: 33.166016}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

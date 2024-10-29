@@ -178,6 +178,11 @@ MonoBehaviour:
     Should you falter\u2026 well, we trust you understand the stakes.\n\nReport to
     your station promptly. Your shift begins upon arrival.\n\nWelcome to the team,\nManagement\n\n...PRESS
     ENTER TO CONTINUE..."
+  - "Remember: this is as much an evaluation of your judgment as it is of the visitors\u2019.
+    Misjudgment comes with consequences. Should you prove diligent, your future here
+    will be secure. Should you falter\u2026 well, we trust you understand the stakes.\n\nReport
+    to your station promptly. Your shift begins upon arrival.\n\nWelcome to the team,\nManagement\n\n...PRESS
+    ENTER TO CONTINUE..."
   typingSpeed: 0.05
   uiTextMeshPro: {fileID: 1819841932}
   typingSound: {fileID: 8300000, guid: 749b608f8985d72489975c2831d7efbd, type: 3}
@@ -609,8 +614,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.3829, y: 37.12}
-  m_SizeDelta: {x: 1436.087, y: 822.5543}
+  m_AnchoredPosition: {x: -14.5175, y: 37.12}
+  m_SizeDelta: {x: 1298.9025, y: 822.5543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1819841932
 MonoBehaviour:
@@ -697,7 +702,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 55.45764, y: 90.48346, z: 0, w: 26.2695}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
