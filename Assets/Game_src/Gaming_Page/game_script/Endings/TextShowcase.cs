@@ -83,7 +83,7 @@ public class TextShowcase : MonoBehaviour
 
     private void LoadMainMenu()
     {
-        if (SceneManager.GetActiveScene().name != "Beginning") SceneManager.LoadScene("Main Menu 1");
+        if (SceneManager.GetActiveScene().name != "Beginning") Application.Quit();
         else SceneManager.LoadScene("game_finally");
     }
 }

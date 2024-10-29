@@ -161,13 +161,7 @@ MonoBehaviour:
     in horror as a second figure appears on the screen - a security officer, seated
     at a console identical to yours, watching you. Their expression is unreadable
     as they assess you, their finger hovering over a so familiar set of buttons,
-    the ones you used to determine the fate of others...\n\nIt dawns on you: you\u2019ve
-    been on trial from the start. Every decision you made, every hesitation, every
-    glimpse of doubt\u2014they were not just observations of others, but of yourself.
-    This entire assignment has been a test to see if you could discern between human
-    and monster, and your indecision has left your own nature in question. They\u2019ve
-    seen the cracks, the shadows in your own judgment, and now they wonder\u2026
-    are you the monster yourself?"
+    the ones you used to determine the fate of others..."
   - "It dawns on you: you\u2019ve been on trial from the start. Every decision you
     made, every hesitation, every glimpse of doubt\u2014they were not just observations
     of others, but of yourself. This entire assignment has been a test to see if
@@ -180,7 +174,7 @@ MonoBehaviour:
     only sound left is the hum of the monitor as the final judgment scrolls onto
     the screen: \u201CSubject Pending. Close observation required.\u201D\n\nAnd as
     the lights dim, you realize with horror that, in their eyes, you are no longer
-    fully human.\n\n...PRESS ENTER TO RETURN TO THE MAIN MENU..."
+    fully human.\n\n...PRESS ENTER TO EXIT THE GAME..."
   typingSpeed: 0.05
   uiTextMeshPro: {fileID: 1819841932}
   typingSound: {fileID: 8300000, guid: 749b608f8985d72489975c2831d7efbd, type: 3}

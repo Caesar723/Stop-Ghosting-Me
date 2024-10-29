@@ -172,7 +172,7 @@ MonoBehaviour:
     you ghosted yourself.\u201D\n\nAnd in that darkness, you understand the cruel
     truth: by rejecting others, you have erased your own presence, lost in the silence
     you created, forever wandering as a ghost in a world that no longer recognizes
-    you.\n\n...PRESS ENTER TO RETURN TO THE MAIN MENU..."
+    you.\n\n...PRESS ENTER TO EXIT THE GAME..."
   typingSpeed: 0.05
   uiTextMeshPro: {fileID: 1819841932}
   typingSound: {fileID: 8300000, guid: 749b608f8985d72489975c2831d7efbd, type: 3}

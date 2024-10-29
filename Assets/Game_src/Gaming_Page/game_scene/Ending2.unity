@@ -160,7 +160,7 @@ MonoBehaviour:
     corridor, you can't help but feel something has followed you out, something waiting
     to slip through the cracks you left behind.\n\nPerhaps, when the time comes,
     you\u2019ll understand what it feels like to be the one on the other side...\n\n...PRESS
-    ENTER TO RETURN TO THE MAIN MENU..."
+    ENTER EXIT THE GAME..."
   typingSpeed: 0.05
   uiTextMeshPro: {fileID: 1819841932}
   typingSound: {fileID: 8300000, guid: 749b608f8985d72489975c2831d7efbd, type: 3}
@@ -664,8 +664,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.3829, y: -95}
-  m_SizeDelta: {x: 1436.087, y: 822.5543}
+  m_AnchoredPosition: {x: -27.988491, y: -95}
+  m_SizeDelta: {x: 1382.8759, y: 822.5543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1819841932
 MonoBehaviour:
@@ -687,7 +687,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "The final report is concise and unforgiving: you've failed to meet the
+    standards required to continue as a security officer. A dismissive 'Thank you
+    for your time' is all you receive before the monitor goes dark.\n\nA cold weight
+    settles in your chest. You wanted to do well, to protect others, but in the end,
+    it wasn\u2019t enough. You made mistakes, let some in who shouldn\u2019t have
+    crossed the gate, and now your failure is etched in records you\u2019ll never
+    see, judged by faces hidden behind closed doors.\n\nAs you gather your things
+    to leave, a strange silence envelops the room. You wonder if maybe this is what
+    the monsters felt - a quiet rejection, an otherness. And as you step into the
+    dim light of the corridor, you can't help but feel something has followed you
+    out, something waiting to slip through the cracks you left behind.\n\nPerhaps,
+    when the time comes, you\u2019ll understand what it feels like to be the one
+    on the other side...\n\n...PRESS ENTER EXIT THE GAME..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7644e129556142848aafb6a9191ef285, type: 2}
   m_sharedMaterial: {fileID: 1004517915762387641, guid: 7644e129556142848aafb6a9191ef285, type: 2}
@@ -752,7 +764,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 56.16736, y: 0, z: 0, w: 138.94012}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

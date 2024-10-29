@@ -175,8 +175,7 @@ MonoBehaviour:
     probation, but now you see it in sharper detail - the slight ticks in people\u2019s
     faces, the shadows behind their eyes. The line between monsters and humans has
     blurred, and you wonder, as the lights dim, if you've really been protecting
-    others... or slowly becoming what you feared.\n\n...PRESS ENTER TO RETURN TO
-    THE MAIN MENU..."
+    others... or slowly becoming what you feared.\n\n...PRESS ENTER TO EXIT THE GAME..."
   typingSpeed: 0.05
   uiTextMeshPro: {fileID: 1819841932}
   typingSound: {fileID: 8300000, guid: 749b608f8985d72489975c2831d7efbd, type: 3}
