@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour
         }
         fadePanel.color = new Color(panelColor.r, panelColor.g, panelColor.b, 1);
         
-        SceneManager.LoadScene("game_finally"); // replace with the game scene later
+        SceneManager.LoadScene("Beginning"); // replace with the game scene later
     }
 
     public void OpenSettings()
