@@ -81,6 +81,7 @@ public class Character_manager:MonoBehaviour
     {
         if (current_people >= max_people)
         {
+            current_people=0;
             day_manager.DayChange();
             Generate_Character(day_manager.day);
             Enter_Scene();
