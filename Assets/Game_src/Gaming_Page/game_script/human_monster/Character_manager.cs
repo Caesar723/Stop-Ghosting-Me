@@ -89,11 +89,12 @@ public class Character_manager:MonoBehaviour
 
     public void Set_Sound_Flag()
     {
-        light_object.SetActive(false);
+        
         character_apperance.SetSoundFlag();
     }
     public void Set_Light_Flag()
     {
+        light_object.SetActive(false);
         character_apperance.SetLightFlag();
     }
     public void Reset()
