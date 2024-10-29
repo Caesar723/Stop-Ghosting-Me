@@ -856,6 +856,7 @@ MonoBehaviour:
   textUI: {fileID: 625903084}
   typingSpeed: 0.05
   button_type: 
+  typeSound: {fileID: 8300000, guid: 749b608f8985d72489975c2831d7efbd, type: 3}
   character: {fileID: 0}
 --- !u!114 &255553140
 MonoBehaviour:

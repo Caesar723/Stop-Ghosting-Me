@@ -10,6 +10,9 @@ public class PhrasePicker : MonoBehaviour
     public TextMeshProUGUI textUI;
     public float typingSpeed = 0.05f;
     public string button_type;
+    [SerializeField] public AudioClip typeSound;
+    bool isTypingSoundPlaying = false;
+    float elapsedTime = 0;
     public Character_apperance character;
 
     private List<string> phrases = new List<string>();
@@ -92,6 +95,7 @@ public class PhrasePicker : MonoBehaviour
             if (typingCoroutine != null)
             {
                 StopCoroutine(typingCoroutine);
+                AudioManager.instance.environmentSource.Stop(); // Stop any ongoing typing sound
             }
 
             // start the new typing
@@ -99,10 +103,9 @@ public class PhrasePicker : MonoBehaviour
         }
     }
 
-    private void LoadPhrasesFromResources(string fileName) // pass file name without path or extension
+    private void LoadPhrasesFromResources(string fileName)
     {
-        phrases.Clear(); // clear existing phrases
-
+        phrases.Clear();
         TextAsset textFile = Resources.Load<TextAsset>(fileName);
         if (textFile != null)
         {
@@ -115,20 +118,29 @@ public class PhrasePicker : MonoBehaviour
         }
     }
 
-
     private IEnumerator TypeText(string phrase)
     {
-        textUI.text = ""; // clear text
+        textUI.text = "";
+        isTypingSoundPlaying = true;
+        elapsedTime = 0f;
+        AudioManager.instance.PlayEnvironmentSound(typeSound);
+
         foreach (char c in phrase)
         {
             textUI.text += c;
+            elapsedTime += typingSpeed;
+            if (elapsedTime >= 6.24f)
+            {
+                AudioManager.instance.environmentSource.Stop();
+                isTypingSoundPlaying = false;
+            }
             yield return new WaitForSeconds(typingSpeed);
         }
 
+        AudioManager.instance.environmentSource.Stop();
+        isTypingSoundPlaying = false;
         yield return new WaitForSeconds(3);
-
         textUI.text = "";
-
         typingCoroutine = null;
     }
 }
