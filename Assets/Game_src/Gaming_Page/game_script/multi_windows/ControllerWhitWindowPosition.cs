@@ -58,7 +58,7 @@ public class ControllerWhitWindowPosition : MonoBehaviour
     }
     private void HostUpdate()
     {
-        positionGetter.SetWindowSize(1960/2,1080/2);
+        positionGetter.SetWindowSize(1920/2,1080/2);
         mainCamera.orthographicSize =5;
         EnvironmentRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame + new Vector2(1.7f,-2.5f);
         CameraRoot.transform.position = positionGetter.GetWindowPosition() * rateBetweenWindowsToGame ;

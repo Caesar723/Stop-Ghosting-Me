@@ -5,6 +5,7 @@ using System.IO;
 
 public class Character_apperance:MonoBehaviour
 {
+    [SerializeField] private Camera camera;
     //this is for the character appearance
     [SerializeField] GameObject General;
     [SerializeField] GameObject X_ray;
@@ -33,7 +34,8 @@ public class Character_apperance:MonoBehaviour
     public string Monster_type = "";
     
 
-
+    public bool Sound_Flag = false;
+    public bool Light_Flag = false;
 
     private string camera_type="0";//0:General, 1:X_ray, 2:Temperature, 3:High_pitch, 4:Dark, 5:Gailic_smile
 
@@ -101,7 +103,7 @@ public class Character_apperance:MonoBehaviour
     private List<List<string>> Monster_part2_path = new List<List<string>>()
     {
         new List<string>() {},
-        new List<string>() {"Image_monster/General/monster_parts/Monster3","Image_monster/General/monster_parts/Monster4"}
+        new List<string>() {"Image_monster/General/monster_parts/Monster3","Image_monster/General/monster_parts/Monster4","Image_monster/General/monster_parts/Monster5"}
     };
 
     private Dictionary<string, Vector2> partPositions = new Dictionary<string, Vector2>()
@@ -131,7 +133,10 @@ public class Character_apperance:MonoBehaviour
     { "Image_human/General/body/Body3", new Vector2(-1.5f, -3f) },
     { "Image_human/General/body/Body4", new Vector2(1.5f, -4.5f) },
 
-    {"Image_monster/General/monster_parts/Monster1", new Vector2(-1.5f, 0f) }
+    {"Image_monster/General/monster_parts/Monster1", new Vector2(-32f, 131f) },
+    // {"Image_monster/General/monster_parts/Monster2", new Vector2(-1.5f, 0f) },
+    // {"Image_monster/General/monster_parts/Monster3_0", new Vector2(-1.5f, 0f) },
+    // {"Image_monster/General/monster_parts/Monster4_0", new Vector2(-1.5f, 0f) }
 };
 
 
@@ -145,8 +150,8 @@ public class Character_apperance:MonoBehaviour
     private string x_ray_path = "";
     private string temperature_path = "";
     private string high_pitch_path = "";
-    private string dark_path = "";
-    private string gailic_smile_path = "";
+    //private string dark_path = "";
+    //private string gailic_smile_path = "";
     private string monster_part1_path = "";
     private string monster_part2_path = "";
 
@@ -293,6 +298,7 @@ public class Character_apperance:MonoBehaviour
         {
             Hair_part.enabled = false;
         }
+
         if (monster_part1_path != "")
         {
             Monster_part1.enabled = true;
@@ -302,6 +308,7 @@ public class Character_apperance:MonoBehaviour
         {
             Monster_part1.enabled = false;
         }
+
         if (monster_part2_path != "")
         {
             Monster_part2.enabled = true;
@@ -332,11 +339,11 @@ public class Character_apperance:MonoBehaviour
         {
             spriteRenderer.transform.localPosition = partPositions[path];
         }
-        else
-        {
-            // default position if can't be found in the dictionary
-            spriteRenderer.transform.localPosition = Vector2.zero;
-        }
+        // else
+        // {
+        //     // default position if can't be found in the dictionary
+        //     spriteRenderer.transform.localPosition = Vector2.zero;
+        // }
     }
 
     private void LoadSpriteFromPath(string path, SpriteRenderer spriteRenderer)
@@ -347,37 +354,57 @@ public class Character_apperance:MonoBehaviour
         
         
     }
-    private (string path, string type) GetMonsterPath(int day)//day 1:general
+    private (string path, string type) GetMonsterPath(int day)//day 1:monster_part1_path or monster_part2_path, 2:High_pitch_path or monster_part1_path or monster_part2_path ,3 and later:temperature_path or high_pitch_path or monster_part1_path or monster_part2_path
     {
         
-        var (body_path, body_index) = GetRandomPath(Body_path, 1);
-        var (face_path, face_index) = GetRandomPath(Face_path, 1);
-        var (eyes_path, eyes_index) = GetRandomPath(Eyes_path, 1);
-        var (mouth_path, mouth_index) = GetRandomPath(Mouth_path, 1);
-        var (hair_path, hair_index) = GetRandomPath(Hair_path, 1);
-        var (nose_path, nose_index) = GetRandomPath(Nose_path, 1);
+        // var (body_path, body_index) = GetRandomPath(Body_path, 1);
+        // var (face_path, face_index) = GetRandomPath(Face_path, 1);
+        // var (eyes_path, eyes_index) = GetRandomPath(Eyes_path, 1);
+        // var (mouth_path, mouth_index) = GetRandomPath(Mouth_path, 1);
+        // var (hair_path, hair_index) = GetRandomPath(Hair_path, 1);
+        // var (nose_path, nose_index) = GetRandomPath(Nose_path, 1);
         var (x_ray_path, x_ray_index) = GetRandomPath(X_ray_path, 1);
         var (temperature_path, temperature_index) = GetRandomPath(Temperature_path, 1);
         var (high_pitch_path, high_pitch_index) = GetRandomPath(High_pitch_path, 1);
         var (monster_part1_path, monster_part1_index) = GetRandomPath(Monster_part1_path, 1);
         var (monster_part2_path, monster_part2_index) = GetRandomPath(Monster_part2_path, 1);
         //var (dark_path, dark_index) = GetRandomPath(Dark_path, 1);
-
-        List<(string path, string type)> paths = new List<(string path, string type)>
+        List<(string path, string type)> paths;
+        if(day == 1)
         {
-            (body_path, "body"),
-            (face_path, "face"),
-            (eyes_path, "eyes"),
-            (mouth_path, "mouth"),
-            (hair_path, "hair"),
-            (nose_path, "nose"),
+            paths = new List<(string path, string type)>
+            {
+                (monster_part1_path, "monster_part1"),
+                (monster_part2_path, "monster_part2")
+            };
+        }   
+        else if(day == 2)
+        {
+            paths = new List<(string path, string type)>
+            {
+                (high_pitch_path, "high_pitch"),
+                (monster_part1_path, "monster_part1"),
+                (monster_part2_path, "monster_part2")
+            };
+        }
+        else
+        {
+            paths = new List<(string path, string type)>
+            {
+            //     (body_path, "body"),
+            // (face_path, "face"),
+            // (eyes_path, "eyes"),
+            // (mouth_path, "mouth"),
+            // (hair_path, "hair"),
+            // (nose_path, "nose"),
             (x_ray_path, "x_ray"),
             (temperature_path, "temperature"),
             (high_pitch_path, "high_pitch"),
-            (dark_path, "dark"),
+            //(dark_path, "dark"),
             (monster_part1_path, "monster_part1"),
             (monster_part2_path, "monster_part2")
-        };
+            };
+        }
 
         paths.RemoveAll(path => string.IsNullOrEmpty(path.path));
         if (paths.Count > 0)

@@ -127,7 +127,7 @@ public class NetworkConnection : NetworkBehaviour
     private void start_become_host()
     {
         isHost_Connect = true;
-        positionGetter.SetWindowSize(1960/2,1080/2);
+        positionGetter.SetWindowSize(1920/2,1080/2);
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         //character_apperance.ChangeAppearance(true);
     }

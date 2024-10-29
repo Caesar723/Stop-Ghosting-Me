@@ -440,6 +440,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101138218}
   m_CullTransparentMesh: 1
+--- !u!1 &199295537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 199295539}
+  - component: {fileID: 199295538}
+  m_Layer: 0
+  m_Name: CharacterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &199295538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199295537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacf4b95f7bad4a249d35feb3ba10f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character_movement: {fileID: 1403759318}
+  character_apperance: {fileID: 1403759312}
+  day_manager: {fileID: 0}
+--- !u!4 &199295539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199295537}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2504823, y: 0.49585176, z: -0.054242678}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &241213366
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +754,7 @@ GameObject:
   - component: {fileID: 255553138}
   - component: {fileID: 255553139}
   - component: {fileID: 255553140}
+  - component: {fileID: 255553141}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -819,6 +867,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverTextUI: {fileID: 1779563160}
   typingSpeed: 0.02
+--- !u!114 &255553141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255553133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacf4b95f7bad4a249d35feb3ba10f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character_movement: {fileID: 1403759318}
+  character_apperance: {fileID: 1403759312}
+  day_manager: {fileID: 255553136}
 --- !u!1 &291384482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,10 +1942,10 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 255553136}
-        m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
-        m_MethodName: DayChange
-        m_Mode: 1
+      - m_Target: {fileID: 255553141}
+        m_TargetAssemblyTypeName: Character_manager, Assembly-CSharp
+        m_MethodName: Check_is_monster
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3035,6 +3098,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.56, y: 0.58}
   m_EdgeRadius: 0
+--- !u!1 &872434806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5386221616841163009, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
+  m_PrefabInstance: {fileID: 1403759310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &930904115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4003,8 +4071,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
-  m_Sprite: {fileID: 130600029345354424, guid: 181204d7a406806419577cce9c89e345, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 3fd879e814869804ca2b2398fcdb6fe0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4574,6 +4642,10 @@ PrefabInstance:
       value: 1233819379
       objectReference: {fileID: 0}
     - target: {fileID: 3756120276981014463, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1279634083}
+    - target: {fileID: 3756120276981014463, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
       propertyPath: Monster_part1
       value: 
       objectReference: {fileID: 1351414398}
@@ -4650,7 +4722,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8010561141433918743, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 366150161}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5386221616841163009, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1403759318}
   m_SourcePrefab: {fileID: 100100000, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
 --- !u!4 &1403759311 stripped
 Transform:
@@ -4662,12 +4737,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3756120276981014463, guid: c418eb5fcf02f466b837a2f591b328a0, type: 3}
   m_PrefabInstance: {fileID: 1403759310}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 872434806}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92b2a6c1a19f3477b8ec4ed8cbbd9c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1403759318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872434806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8795a7f4f462d4446afe9a6d995bdd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  camera: {fileID: 1279634083}
+  character_manager: {fileID: 255553141}
 --- !u!1 &1426781433
 GameObject:
   m_ObjectHideFlags: 0
@@ -5687,7 +5777,19 @@ MonoBehaviour:
   pressedSprite: {fileID: -8707542765969355240, guid: 3ec11d65a086340a79d62b372b9b78db, type: 3}
   onClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 255553141}
+        m_TargetAssemblyTypeName: Character_manager, Assembly-CSharp
+        m_MethodName: Check_is_monster
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   energyCost: 0
   yChange: 0.04
   clickSound: {fileID: 8300000, guid: 4e960e6e8582ca14ba727f2c2d9f2156, type: 3}
@@ -7283,3 +7385,4 @@ SceneRoots:
   - {fileID: 1874631435}
   - {fileID: 572303577}
   - {fileID: 1374261275}
+  - {fileID: 199295539}
