@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.IO;
+using System.Collections;
 
 public class Character_apperance:MonoBehaviour
 {
@@ -519,7 +520,20 @@ public class Character_apperance:MonoBehaviour
         Debug.Log("GetAppearance: " + body_path + "," + face_path + "," + eyes_path + "," + eyes_blink_path + "," + mouth_path + "," + hair_path + "," + nose_path + "," + x_ray_path + "," + temperature_path + "," + high_pitch_path + "," + monster_part1_path + "," + monster_part2_path);
         return body_path + "," + face_path + "," + eyes_path + "," + eyes_blink_path + "," + mouth_path + "," + hair_path + "," + nose_path + "," + x_ray_path + "," + temperature_path + "," + high_pitch_path + "," + monster_part1_path + "," + monster_part2_path;
     }
-    
-    
-    
+
+
+    public void Blink()
+    {
+        Transform eyesTransform = this.gameObject.transform.Find("Eyes");
+        Debug.LogWarning("Blinking");
+
+        StartCoroutine(BlinkCoroutine()); 
+    }
+
+    private IEnumerator BlinkCoroutine()
+    {
+        LoadSpriteFromPath(eyes_blink_path, Eyes_part);
+        yield return new WaitForSeconds(0.3f);
+        LoadSpriteFromPath(eyes_path, Eyes_part);
+    }
 }
