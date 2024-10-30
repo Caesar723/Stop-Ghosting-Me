@@ -1,14 +1,14 @@
 # Stop-Ghosting-Me
- 
-Credits:  
+ Made for the University of Manchester Autumn Game Jam 2024. 2nd Place
+## Credits:  
 
- Sounds + Music:
+ ### Sounds + Music:
 	Error signal: https://freesound.org/people/Breviceps/sounds/445978/ ; by Breviceps
 	Typing sound: https://freesound.org/people/AidanSounds/sounds/648684/ ; by AidanSounds
 	Button sounds: https://freesound.org/people/Coral_Island_Studios/sounds/277652/ ; by Coral_Island_Studios
 	Main menu sounds: https://opengameart.org/content/8-bit-nightmare-00 ; by Nicolás Ortega
 
-About the game:  
+## About the game:  
 
 Although the game was developed mainly in a way that makes user go into it blindly, we decided to leave some explanations due to the fact
 that it takes some time to understand. The main character is a security officer on probation, whose job is to make sure that only humans can enter,
