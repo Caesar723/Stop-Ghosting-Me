@@ -26,3 +26,7 @@ Ending 3: try "ghosting" all the visitors (Secret ending 1)
 Ending 4: be REALLY indecisive (Secret ending 2)  
 
 Sorry if all of this sounded complicated, hopefully it is easier to understand everything in game. Have fun!
+
+https://github.com/user-attachments/assets/edfa2a05-e1f3-4ca9-b643-714f7f50e606
+
+
